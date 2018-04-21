@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
 public class Base : MonoBehaviour {
-	
-	public int Hp;
+	public int hp;
 
 	void Start() {
         Debug.Log("BASE COORDINATES:");

@@ -14,6 +14,11 @@ public class Body : MonoBehaviour {
         transform.position = pos;
 	}
 
+	public void Delete() {
+		next.Delete();
+		Destroy(gameObject);
+	}
+
 	public void Grow(GameObject bodyPrefab) {
 		if (next == null) {
 			GameObject gameObject = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
