@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	[SerializeField] private int _tilesPerSecond = 1;
+	
 	[SerializeField] private int _health = 100;
 
 	public int Health
@@ -30,35 +30,15 @@ public class Enemy : MonoBehaviour
 		print("Minion died");
 	}
 
-
-	public int TilesPerSecond
-	{
-		get { return _tilesPerSecond; }
-		set { _tilesPerSecond = value; }
-	}
-
-	private float _moveTimer;
-	
-	public Vector2 MoveDirection { get; set; }
-
 	// Use this for initialization
-	void Start () {
-		MoveDirection = Vector2.right;
+	void Start () 
+	{
+		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		_moveTimer += Time.deltaTime;
-	}
-
-	private void FixedUpdate()
-	{
-		if (_moveTimer > 1.0f/_tilesPerSecond)
-		{
-			_moveTimer = 0;
-			transform.Translate(MoveDirection);
-		}
 		
 	}
 }
