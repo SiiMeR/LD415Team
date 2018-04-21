@@ -6,6 +6,9 @@ public class Projectile : MonoBehaviour {
 	public Enemy target;
 
 	void Update() {
+		if (target == null) {
+			Destroy(gameObject);
+		}
 		Vector3 separation = target.transform.position - transform.position;
 		transform.Translate(separation.normalized * speed * Time.deltaTime);
 		if (separation.sqrMagnitude < 0.1) {
