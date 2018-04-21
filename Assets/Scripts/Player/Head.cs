@@ -7,10 +7,11 @@ public class Head : MonoBehaviour {
 
 	int counter = 0;
 	int n;
-	Vector2 moveDirection = Vector2.right;
+	Vector2 moveDirection = Vector2.up;
 
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
+		//TEMPORARY
 		for (int i = 0; i < 5; i++) {
 			Grow();
 		}
