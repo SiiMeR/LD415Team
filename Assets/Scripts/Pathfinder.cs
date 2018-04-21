@@ -22,7 +22,6 @@ public class Pathfinder : Singleton<Pathfinder>
 	// Update is called once per frame
 	void Update ()
 	{
-		FindPath(startPos.position, endPos.position);
 	}
 
 	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos)
@@ -77,6 +76,8 @@ public class Pathfinder : Singleton<Pathfinder>
 					neighbour.gCost = movecost;
 					neighbour.hCost = GetManHTDist(neighbour, endTile);
 					neighbour.Parent = currentTile;
+					
+					return new List<GridTile>(){neighbour};
 
 					if (!openList.Contains(neighbour))
 					{
