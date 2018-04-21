@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		snakeBase.gold += gold;
+		snakeBase.Gold += gold;
 		EnemyTracker.enemies.Remove(this);
         Destroy(gameObject);
     }
@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour {
         if (Vector3.Distance(transform.position, snakeBase.transform.position) < 0.1f) {
             DamageBase();
         }
+	    
+	    
     }
 
     public void DamageBase() {

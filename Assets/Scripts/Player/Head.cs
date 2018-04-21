@@ -12,7 +12,7 @@ public class Head : MonoBehaviour {
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 20; i++) {
 			Grow();
 		}
 	}
