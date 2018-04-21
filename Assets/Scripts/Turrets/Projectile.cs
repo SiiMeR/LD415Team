@@ -12,7 +12,9 @@ public class Projectile : MonoBehaviour {
 		Vector3 separation = target.transform.position - transform.position;
 		transform.Translate(separation.normalized * speed * Time.deltaTime);
 		if (separation.sqrMagnitude < 0.1) {
-			//HURT THEM!
+			target.Health -= damage;
+			print(target.Health);
+			Destroy(gameObject);
 		}
 	}
 }

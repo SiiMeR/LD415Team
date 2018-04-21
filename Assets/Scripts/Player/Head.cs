@@ -66,7 +66,6 @@ public class Head : MonoBehaviour {
 		//Calculate next position
 		int newX = (int) (transform.position.x + moveDirection.x);
 		int newY = (int) (transform.position.y + moveDirection.y);
-		Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + moveDirection;
 		if (newX < 0) {
 			newX = GridSingleton.Instance.gridWorldSize.x - 1;
 		} else if (newX == GridSingleton.Instance.gridWorldSize.x) {
