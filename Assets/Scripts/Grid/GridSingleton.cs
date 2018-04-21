@@ -39,7 +39,6 @@ public class GridSingleton : Singleton<GridSingleton>
 		nodeDiameter = nodeRadius * 2;  
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
 		
-		print(gridWorldSize.x / nodeDiameter + "diam");
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
 		
 		grid = new GridTile[gridSizeX *  gridSizeY];
