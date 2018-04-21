@@ -4,7 +4,9 @@ using UnityEngine;
 public class GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
-	
+	public List<GameObject> otherTiles;
+	public GameObject specialTile;
+
 	public Transform StartPosition;
 	public LayerMask LayerMask;
 	public Vector2Int gridWorldSize;
@@ -71,8 +73,18 @@ public class GridSingleton : Singleton<GridSingleton>
 				grid[y * gridSizeX + x] = new GridTile(worldPoint, x, y, TileType.EMPTY);
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{
-					
-					GameObject tile = Instantiate(bgTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
+					float randomNumber = Random.Range(0f, 1f);
+					GameObject randomTile = bgTile;
+					for (int i = 0; i < otherTiles.Count; i++) {
+						if (randomNumber > 1 - 0.1f * (i + 1)) {
+							randomTile = otherTiles[i];
+							break;
+						}
+					}
+					if (y == gridSizeY - BGUnitsPerTile && x == gridSizeX - BGUnitsPerTile) {
+						randomTile = specialTile;
+					}
+					GameObject tile = Instantiate(randomTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
 					tile.transform.SetParent(transform);   
 				
 				}

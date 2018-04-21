@@ -80,8 +80,8 @@ public class Head : MonoBehaviour {
 
 		//Check if something is in the way
 		GridTile tile = GridSingleton.Instance.Get(newX, newY);
-		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.ENEMY) {
-			Application.Quit(); //BAD STUFF
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE) {
+			Application.Quit(); //TODO: BAD STUFF
 		} else {
 			transform.position = new Vector3(newX, newY);
 			GridSingleton.Instance.Set(newX, newY, TileType.SNAKE);
