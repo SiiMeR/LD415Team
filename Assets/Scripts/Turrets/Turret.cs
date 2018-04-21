@@ -4,28 +4,45 @@ public class Turret : MonoBehaviour {
 	public float range;
 	public float cooldown;
 	public GameObject projectile;
+	Enemy target;
 
 	float timer = 0;
-    public AudioClip shootSound;
-    private AudioSource shootingSound;
-
-    private void Awake()
-    {
-        shootingSound = GetComponent<AudioSource>();
-    }
 
     void Update() {
 		timer += Time.deltaTime;
+
+		//Keep aiming at the closest enemy
+		if (target != null) {
+			Aim();
+		} else {
+			target = EnemyTracker.GetNearest(transform.position);
+			Aim();
+		}
+
 		if (timer > cooldown) {
 			timer -= cooldown;
 
-			Enemy target = EnemyTracker.GetNearest(transform.position);
+			//Get a new closest enemy if the current one is out of range
 			if (target != null) {
-             //   shootingSound.PlayOneShot(shootSound, 1.0f);
-				AudioManager.instance.Play("shootingSound"); // string nimi
-                Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-				shotRef.target = target;
+				if ((target.transform.position - transform.position).magnitude < range) {
+					Shoot();
+				} else {
+					Enemy target = EnemyTracker.GetNearest(transform.position);
+					if ((target.transform.position - transform.position).magnitude < range) {
+						Shoot();
+					}
+				}
 			}
 		}
+	}
+
+	void Aim() {
+		transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y));
+	}
+
+	void Shoot() {
+		AudioManager.instance.Play("shootingSound"); // string nimi
+		Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+		shotRef.target = target;
 	}
 }
