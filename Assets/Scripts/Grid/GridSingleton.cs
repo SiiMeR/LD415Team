@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSingleton : MonoBehaviour
+public class GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
-	
 	
 	public Transform StartPosition;
 	public LayerMask LayerMask;
@@ -14,29 +13,29 @@ public class GridSingleton : MonoBehaviour
 
 	public int BGUnitsPerTile = 4;
 	
-	public static int width;
-	public static int height;
+	public  int width;
+	public  int height;
 	
-	private static GridTile[] grid; // = new GridTile[width * height];
+	private  GridTile[] grid; // = new GridTile[width * height];
 
 	public List<GridTile> FinalPath;
 	private float nodeDiameter;
 	private int gridSizeX, gridSizeY;
 	
-	public static GridTile Get(int col, int row) {
+	public GridTile Get(int col, int row) {
 		return grid[row * width + col];
 	}
 
-	public static void Set(int col, int row, TileType gridType) {
+	public void Set(int col, int row, TileType gridType) {
 	//	grid[row * width + col] = gridType;
 	}
 
-	public static void Set(Vector2Int colRow, TileType gridType)
+	public void Set(Vector2Int colRow, TileType gridType)
 	{
 	//	grid[colRow.y * width + colRow.x] = gridType;
 		
 	}
-
+	
 	private void Start()
 	{
 		nodeDiameter = nodeRadius * 2;  

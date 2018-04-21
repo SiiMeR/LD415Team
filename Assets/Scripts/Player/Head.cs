@@ -60,7 +60,7 @@ public class Head : MonoBehaviour {
 			}
             Debug.Log(transform.position.x);
             Debug.Log(transform.position.y);
-            Debug.Log(GridSingleton.Get((int)transform.position.x, (int)transform.position.y));
+            Debug.Log(GridSingleton.Instance.Get((int)transform.position.x, (int)transform.position.y));
             Vector2 temp = new Vector2(transform.position.x , transform.position.y) + moveDirection;
             Debug.Log("---");
             Debug.Log(temp);
@@ -69,7 +69,7 @@ public class Head : MonoBehaviour {
             //    Debug.Log("Game Over");  
             //}
 			transform.Translate(moveDirection, Space.World);
-            GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
+            GridSingleton.Instance.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
             
             lastDirection = direction;
 		}		
