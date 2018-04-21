@@ -2,6 +2,7 @@
 
 public class Enemy : MonoBehaviour {	
 	[SerializeField] private float _health = 100;
+	public int gold = 1;
     Base snakeBase;
 
 	public float Health
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
+		snakeBase.gold += gold;
 		EnemyTracker.enemies.Remove(this);
         Destroy(gameObject);
     }
