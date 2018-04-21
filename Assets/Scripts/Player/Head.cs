@@ -3,14 +3,17 @@
 public class Head : MonoBehaviour {
 	public float tilesPerSecond = 1;
 	public Body neck;
-
+    public GameObject bodyPrefab;
 	int counter = 0;
 	int n;
 	Vector2 moveDirection = Vector2.right;
 
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
+        Grow();
 	}
+
+
 
 	enum Direction {
 		up,
@@ -53,4 +56,13 @@ public class Head : MonoBehaviour {
 			lastDirection = direction;
 		}		
 	}
+
+    public void Grow()
+    {
+        if (neck == null)
+        {
+            GameObject gameObject = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
+            neck = gameObject.GetComponent<Body>();
+        }
+    }
 }
