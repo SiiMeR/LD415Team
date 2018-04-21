@@ -59,7 +59,9 @@ public class Head : MonoBehaviour {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
             Vector2 temp = new Vector2(transform.position.x , transform.position.y) + moveDirection;
-            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE)
+            
+            //int GridSingleton
+            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE|| TileType.ENEMY)
             //{
             //    Debug.Log("Game Over");  
             //}
