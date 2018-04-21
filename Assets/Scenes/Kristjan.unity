@@ -328,6 +328,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &308661826 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114876919633792424, guid: 4b5bafad65be1e04fbe33322c23d684e,
+    type: 2}
+  m_PrefabInternal: {fileID: 2087630916}
+  m_Script: {fileID: 11500000, guid: 9e52b599dc0cbf1469d8952ef599a55b, type: 3}
 --- !u!1 &980788593
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +537,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114687641853492602, guid: 1a3577553141d584a8369d95a3a151e1,
+        type: 2}
+      propertyPath: snakeBase
+      value: 
+      objectReference: {fileID: 308661826}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a3577553141d584a8369d95a3a151e1, type: 2}
   m_IsPrefabParent: 0

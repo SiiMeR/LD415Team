@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 	
 	[SerializeField] private int _health = 100;
-    Base snakeBase;
+    public Base snakeBase;
 
 	public int Health
 	{
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     public void DamageBase()
     {
-        snakeBase.Hp -= 1;
+        snakeBase.hp -= 1;
         Destroy(gameObject);
     }
 
