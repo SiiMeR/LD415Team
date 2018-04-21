@@ -5,11 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     Vector2Int lastMoveDirection;
-    
+    GridMovement gridMovement;
  
     // Use this for initialization
     void Start () {
         lastMoveDirection = Vector2Int.up;
+        gridMovement = GetComponent<GridMovement>();
     }
 	
 	// Update is called once per frame
@@ -34,7 +35,8 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        transform.Translate(new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * Time.fixedDeltaTime);
+        //transform.Translate(new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * Time.fixedDeltaTime);  
+        gridMovement.MoveDirection = lastMoveDirection;
     }
 
 
