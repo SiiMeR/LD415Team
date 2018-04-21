@@ -7,6 +7,10 @@ public class Body : MonoBehaviour {
 		if (next != null) {
 			next.Move(transform.position);
 		}
+        else
+        {
+            GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.EMPTY);
+        }
 		transform.position = pos;
 	}
 
