@@ -9,4 +9,13 @@ public class Body : MonoBehaviour {
 		}
 		transform.position = pos;
 	}
+
+	public void Grow(GameObject bodyPrefab) {
+		if (next == null) {
+			GameObject gameObject = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
+			next = gameObject.GetComponent<Body>();
+		} else {
+			next.Grow(bodyPrefab);
+		}
+	}
 }

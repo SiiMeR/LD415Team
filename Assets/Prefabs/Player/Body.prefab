@@ -21,11 +21,9 @@ GameObject:
   - component: {fileID: 4447676415044502}
   - component: {fileID: 212488847680116522}
   - component: {fileID: 50387290557488082}
-  - component: {fileID: 114160968808418100}
-  - component: {fileID: 114517871022757198}
-  - component: {fileID: 114163139668531560}
+  - component: {fileID: 114044449310445660}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,18 +62,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &114160968808418100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841239682738594}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a46ade35336f849bc02461a8d9d17b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114163139668531560
+--- !u!114 &114044449310445660
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -83,23 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841239682738594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3515e0c6373d9d34b9f650def0ab3d37, type: 3}
+  m_Script: {fileID: 11500000, guid: 89d12e45827546043963d6dd81979560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesPerSecond: 1
-  neck: {fileID: 0}
---- !u!114 &114517871022757198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841239682738594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a74aea49b62ec449c6005ecb883b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tilesPerSecond: 2
+  next: {fileID: 0}
+  bodyPrefab: {fileID: 1841239682738594, guid: 65c0efdd0fccc2f499093722dd1b4f85, type: 2}
 --- !u!212 &212488847680116522
 SpriteRenderer:
   m_ObjectHideFlags: 1
