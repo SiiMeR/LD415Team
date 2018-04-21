@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
 	
 	[SerializeField] private int _health = 100;
+    public Base snakeBase;
 
 	public int Health
 	{
@@ -27,7 +28,8 @@ public class Enemy : MonoBehaviour
 	private void Die()
 	{
 		print("Minion died");
-	}
+        Destroy(gameObject);
+    }
 
 	// Use this for initialization
 	void Start () 
@@ -38,6 +40,23 @@ public class Enemy : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
-	}
+        
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (Vector3.Distance(transform.position, snakeBase.transform.position) < 0.1f)
+        {
+            DamageBase();
+        }
+        
+    }
+
+    public void DamageBase()
+    {
+        snakeBase.hp -= 1;
+        Die();
+    }
+
 }
