@@ -2,6 +2,8 @@
 
 public class Body : MonoBehaviour {
 	public Body next;
+    
+    public GameObject turretPrefab;
 
 	public void Move(Vector3 pos) {
 		if (next != null) {
@@ -19,11 +21,12 @@ public class Body : MonoBehaviour {
 	}
 
 	public void Grow(GameObject bodyPrefab) {
-		if (next == null) {
+        if (next == null) {
 			GameObject go = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
 			next = go.GetComponent<Body>();
 		} else {
 			next.Grow(bodyPrefab);
-		}
+           
+        }
 	}
 }
