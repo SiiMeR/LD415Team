@@ -18,6 +18,8 @@ public class GridSingleton : Singleton<GridSingleton>
 	public List<GridTile> FinalPath;
 	private float nodeDiameter;
 	private int gridSizeX, gridSizeY;
+
+	private float offset = 1.5f;
 	
 	public GridTile Get(int col, int row) {
 		return grid[row * gridSizeX + col];
@@ -61,12 +63,12 @@ public class GridSingleton : Singleton<GridSingleton>
 			{
 				Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) +
 				                     Vector3.up * (y * nodeDiameter + nodeRadius);
-
+				
 				var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
 				
 				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y, TileType.EMPTY);
 				
-			//	Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
+				Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
 
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{
@@ -83,7 +85,7 @@ public class GridSingleton : Singleton<GridSingleton>
 	private void OnDrawGizmos()
 	{
 
-		Gizmos.DrawWireCube(new Vector3(transform.position.x -1.5f, transform.position.y - 1.5f,0), new Vector3(gridWorldSize.x, gridWorldSize.y,1));
+		Gizmos.DrawWireCube(new Vector3(transform.position.x - offset, transform.position.y - offset,0), new Vector3(gridWorldSize.x, gridWorldSize.y,1));
 
 		if (grid != null)
 		{
@@ -108,9 +110,9 @@ public class GridSingleton : Singleton<GridSingleton>
 
 
 				Color c = Gizmos.color;
-				c.a = 0.5f;
+				c.a = 0.99f;
 				Gizmos.color = c;
-				Gizmos.DrawCube(new Vector3(node.Position.x -1.5f, node.Position.y -1.5f), new Vector3(0.7f,0.7f,0.7f) * (nodeDiameter - Distance));
+				Gizmos.DrawCube(new Vector3(node.Position.x -offset, node.Position.y -offset), new Vector3(0.7f,0.7f,0.7f) * (nodeDiameter - Distance));
 			}
 		}
 	}
