@@ -101,6 +101,14 @@ public class GridSingleton : Singleton<GridSingleton>
 				{
 					Gizmos.color = Color.white;
 				}
+				else if(node.type == TileType.BASE)
+				{
+					Gizmos.color = Color.magenta;
+				}
+				else if (node.type == TileType.ENEMY)
+				{
+					Gizmos.color = Color.cyan;
+				}
 				else
 				{
 					Gizmos.color = Color.yellow;
