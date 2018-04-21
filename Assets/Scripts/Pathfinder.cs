@@ -7,10 +7,6 @@ public class Pathfinder : Singleton<Pathfinder>
 {
 
 	private GridSingleton grid;
-
-	public Transform startPos;
-
-	public Transform endPos;
 	
 	 
 	// Use this for initialization
@@ -26,6 +22,9 @@ public class Pathfinder : Singleton<Pathfinder>
 
 	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos)
 	{
+		print(startPos);
+	//	print(grid);
+		print(grid.Get((int) startPos.x, (int) startPos.y));
 
 		GridTile startTile = grid.Get((int) startPos.x,(int) startPos.y);
 		GridTile endTile = grid.Get((int) endPos.x,(int) endPos.y);
@@ -76,8 +75,6 @@ public class Pathfinder : Singleton<Pathfinder>
 					neighbour.gCost = movecost;
 					neighbour.hCost = GetManHTDist(neighbour, endTile);
 					neighbour.Parent = currentTile;
-					
-					return new List<GridTile>(){neighbour};
 
 					if (!openList.Contains(neighbour))
 					{

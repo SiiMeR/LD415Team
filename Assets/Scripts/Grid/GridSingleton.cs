@@ -9,7 +9,6 @@ public class GridSingleton : Singleton<GridSingleton>
 	public List<GameObject> otherTiles;
 	public GameObject specialTile;
 
-	public Transform StartPosition;
 	
 	//public Transform StartPosition;
 	public LayerMask LayerMask;
@@ -80,6 +79,7 @@ public class GridSingleton : Singleton<GridSingleton>
 		    	GridTile tileempty = new GridTile(worldPoint, x, y, TileType.EMPTY);
 				
 				Set(x,y, tileempty);
+				
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{
 					float randomNumber = Random.Range(0f, 1f);
