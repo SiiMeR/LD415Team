@@ -12,7 +12,7 @@ public class Head : MonoBehaviour {
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			Grow();
 		}
 	}
@@ -56,10 +56,22 @@ public class Head : MonoBehaviour {
 		if (counter == n) {
 			counter = 0;
 			if (neck != null) {
-				neck.Move(transform.position + Vector3.forward);
+				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
+            Debug.Log(transform.position.x);
+            Debug.Log(transform.position.y);
+            Debug.Log(GridSingleton.Get((int)transform.position.x, (int)transform.position.y));
+            Vector2 temp = new Vector2(transform.position.x , transform.position.y) + moveDirection;
+            Debug.Log("---");
+            Debug.Log(temp);
+            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE)
+            //{
+            //    Debug.Log("Game Over");  
+            //}
 			transform.Translate(moveDirection, Space.World);
-			lastDirection = direction;
+            GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
+            
+            lastDirection = direction;
 		}		
 	}
 
