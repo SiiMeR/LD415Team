@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4577222981844596}
   - component: {fileID: 114482683288174236}
   - component: {fileID: 212457803708343616}
-  - component: {fileID: 114540680046991882}
   - component: {fileID: 82651527268053626}
   m_Layer: 0
   m_Name: Turret
@@ -134,24 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82102cddfd363324b8d1b656a3f5da0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 20
   cooldown: 1
   projectile: {fileID: 0}
   shootSound: {fileID: 0}
---- !u!114 &114540680046991882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413533011684592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d2a293fc38baa4f8f0b5024ae02b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  target: {fileID: 114687641853492602, guid: 1a3577553141d584a8369d95a3a151e1, type: 2}
 --- !u!212 &212457803708343616
 SpriteRenderer:
   m_ObjectHideFlags: 1
