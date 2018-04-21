@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
-public class Pathfinder : MonoBehaviour
+public class Pathfinder : Singleton<Pathfinder>
 {
 
 	private GridSingleton grid;
@@ -25,11 +25,11 @@ public class Pathfinder : MonoBehaviour
 		FindPath(startPos.position, endPos.position);
 	}
 
-	private void FindPath(Vector3 startPos, Vector3 endPos)
+	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos)
 	{
 
-		GridTile startTile = grid.TileFromWorldPos(startPos);
-		GridTile endTile = grid.TileFromWorldPos(endPos);
+		GridTile startTile = grid.Get((int) startPos.x,(int) startPos.y);
+		GridTile endTile = grid.Get((int) endPos.x,(int) endPos.y);
 		
 //		print(endTile.gridX + " " + endTile.gridY);
 //		print(startTile.gridX + " " + startTile.gridY);
@@ -58,7 +58,8 @@ public class Pathfinder : MonoBehaviour
 
 			if (currentTile == endTile)
 			{
-				GetFinalPath(startTile, endTile);
+				return GetFinalPath(startTile, endTile);
+				
 			}
 
 			foreach (var neighbour in grid.getNeighbours(currentTile))
@@ -66,7 +67,7 @@ public class Pathfinder : MonoBehaviour
 				if (neighbour.type == TileType.SNAKE || closedList.Contains(neighbour))
 				{
 					continue;
-				
+
 				}
 
 				int movecost = currentTile.gCost + GetManHTDist(currentTile, neighbour);
@@ -83,7 +84,11 @@ public class Pathfinder : MonoBehaviour
 					}
 				}
 			}
+
+			
 		}
+		
+		return null;
 	}
 
 	private int GetManHTDist(GridTile tile1, GridTile tile2)
@@ -94,7 +99,7 @@ public class Pathfinder : MonoBehaviour
 		return ix + iy;
 	}
 
-	private void GetFinalPath(GridTile startTile, GridTile endTile)
+	private List<GridTile> GetFinalPath(GridTile startTile, GridTile endTile)
 	{
 		List<GridTile> finalPath = new List<GridTile>();
 		GridTile currentTile = endTile;
@@ -109,8 +114,9 @@ public class Pathfinder : MonoBehaviour
 		finalPath.Reverse();
 
 		grid.FinalPath = finalPath;
-		
-		
+
+		return finalPath;
+
 //		print(finalPath.Count);
 	}
 }

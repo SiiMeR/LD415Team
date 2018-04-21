@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class GridSingleton : Singleton<GridSingleton>
 {
@@ -152,24 +153,8 @@ public class GridSingleton : Singleton<GridSingleton>
 		}
 	}
 
-	public GridTile TileFromWorldPos(Vector3 startPos)
-	{
-		float xpoint = ((startPos.x + (float)gridWorldSize.x/ 2) / (float)gridWorldSize.x);
 
-		float ypoint = ((startPos.y+ (float)gridWorldSize.y/ 2) / (float)gridWorldSize.y);
 
-	
-		
-//		print(xpoint + " ss " + ypoint);
-		xpoint = Mathf.Clamp01(xpoint);
-		ypoint = Mathf.Clamp01(ypoint);
-
-		int x = Mathf.RoundToInt((gridSizeX - 1) * xpoint);
-		int y = Mathf.RoundToInt((gridSizeY - 1) * ypoint);
-
-		return Get(x, y);
-
-	}
 
 	public List<GridTile> getNeighbours(GridTile currentTile)
 	{

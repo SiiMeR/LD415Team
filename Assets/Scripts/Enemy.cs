@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour {
         if (Vector3.Distance(transform.position, snakeBase.transform.position) < 0.1f) {
             DamageBase();
         }
+	    
+	    
     }
 
     public void DamageBase() {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyTracker : MonoBehaviour {
 	public static List<Enemy> enemies = new List<Enemy>();
-
+	
 	public static Enemy GetNearest(Vector3 position) {
 		Enemy nearest = null;
 		float sqrDistance = float.MaxValue;
@@ -18,5 +18,14 @@ public class EnemyTracker : MonoBehaviour {
 		}
 
 		return nearest;
+	}
+
+
+	void Start()
+	{
+	}
+	void Update()
+	{
+		
 	}
 }
