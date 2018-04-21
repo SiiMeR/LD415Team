@@ -46,7 +46,9 @@ public class Head : MonoBehaviour {
 
 		if (counter == n) {
 			counter = 0;
-			neck.Move(transform.position);
+			if (neck != null) {
+				neck.Move(transform.position);
+			}
 			transform.Translate(moveDirection);
 			lastDirection = direction;
 		}		
