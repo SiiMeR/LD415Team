@@ -26,13 +26,13 @@ public class GridSingleton : Singleton<GridSingleton>
 		return grid[row * width + col];
 	}
 
-	public void Set(int col, int row, TileType gridType) {
-	//	grid[row * width + col] = gridType;
+	public void Set(int col, int row, TileType type) {
+		grid[row * width + col].type = type;
 	}
 
-	public void Set(Vector2Int colRow, TileType gridType)
+	public void Set(Vector2Int colRow, TileType type)
 	{
-	//	grid[colRow.y * width + colRow.x] = gridType;
+		grid[colRow.y * width + colRow.x].type = type;
 		
 	}
 	
@@ -66,9 +66,9 @@ public class GridSingleton : Singleton<GridSingleton>
 
 				var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
 				
-				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y);
+				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y, TileType.EMPTY);
 				
-				Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
+			//	Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
 
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{

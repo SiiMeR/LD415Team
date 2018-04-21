@@ -16,13 +16,16 @@ public class GridTile {
 	public int gCost;
 	public int hCost;
 
+	public TileType type;
+
 	public int FCost {
 		get { return gCost + hCost; }
 
 	}
 
-	public GridTile(bool isWall, Vector3 pos, int gridX, int gridY)
+	public GridTile(bool isWall, Vector3 pos, int gridX, int gridY, TileType type)
 	{
+		this.type = type;
 		this.IsWall = isWall;
 		Position = pos;
 		this.gridX = gridX;
