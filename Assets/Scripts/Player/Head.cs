@@ -58,8 +58,19 @@ public class Head : MonoBehaviour {
 			if (neck != null) {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
+            Debug.Log(transform.position.x);
+            Debug.Log(transform.position.y);
+            Debug.Log(GridSingleton.Get((int)transform.position.x, (int)transform.position.y));
+            
+            if (GridSingleton.Get((int)transform.position.x, (int)transform.position.y).Equals(TileType.SNAKE))
+            {
+                Debug.Log("Game Over");
+                
+            }
 			transform.Translate(moveDirection, Space.World);
-			lastDirection = direction;
+            GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
+            
+            lastDirection = direction;
 		}		
 	}
 
