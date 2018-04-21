@@ -1,10 +1,18 @@
-﻿using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Base : MonoBehaviour {
 	public int hp;
-    public int gold;
+    public int gold = 0;
+	public int Gold {
+		get {
+			return gold;
+		} set {
+			gold = value;
+			UpdateGoldText();
+		}
+	}
+
     public Text goldText;
 
 	void Start() {

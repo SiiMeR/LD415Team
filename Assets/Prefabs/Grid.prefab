@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4622403299427340}
   - component: {fileID: 114594649309560894}
-  - component: {fileID: 114700608730113310}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -35,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1031592503558224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: 17, z: 0}
+  m_LocalPosition: {x: 13, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,20 +61,7 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 32, y: 32}
+  gridWorldSize: {x: 12, y: 12}
   nodeRadius: 0.5
   Distance: 0
   BGUnitsPerTile: 4
---- !u!114 &114700608730113310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1031592503558224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd29207c7f77094da33c4220f920626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {fileID: 0}
-  endPos: {fileID: 0}
