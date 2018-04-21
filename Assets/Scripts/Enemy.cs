@@ -22,7 +22,10 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		EnemyTracker.enemies.Remove(this);
+        snakeBase.gold += (int)Random.Range(5.0f, 15.0f);
+        print(snakeBase.gold);
+        snakeBase.UpdateGoldText();
+        EnemyTracker.enemies.Remove(this);
         Destroy(gameObject);
     }
 

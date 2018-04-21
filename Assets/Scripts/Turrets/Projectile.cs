@@ -4,6 +4,7 @@ public class Projectile : MonoBehaviour {
 	public float damage;
 	public float speed;
 	public Enemy target;
+    public Base snakeBase;
 
 	void Update() {
 		if (target == null) {
@@ -12,7 +13,7 @@ public class Projectile : MonoBehaviour {
 			Vector3 separation = target.transform.position - transform.position;
 			transform.Translate(separation.normalized * speed * Time.deltaTime);
 			if (separation.sqrMagnitude < 0.1) {
-				target.Health -= damage;
+                target.Health -= damage;
 				print(target.Health);
 				Destroy(gameObject);
 			}
