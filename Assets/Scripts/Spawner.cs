@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour {
 
 	IEnumerator Spawn() {
 		while (true) {
-			Instantiate(enemies[Random.Range(0, enemies.Count - 1)]);
+			Instantiate(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
 			yield return new WaitForSeconds(cooldown);
 		}
 	}

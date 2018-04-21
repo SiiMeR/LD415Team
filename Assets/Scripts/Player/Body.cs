@@ -2,8 +2,6 @@
 
 public class Body : MonoBehaviour {
 	public Body next;
-    
-    public GameObject turretPrefab;
 
 	public void Move(Vector3 pos) {
 		if (next != null) {
