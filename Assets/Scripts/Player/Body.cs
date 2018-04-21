@@ -21,8 +21,8 @@ public class Body : MonoBehaviour {
 
 	public void Grow(GameObject bodyPrefab) {
 		if (next == null) {
-			GameObject gameObject = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
-			next = gameObject.GetComponent<Body>();
+			GameObject go = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
+			next = go.GetComponent<Body>();
 		} else {
 			next.Grow(bodyPrefab);
 		}
