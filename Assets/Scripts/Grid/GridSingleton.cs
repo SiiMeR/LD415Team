@@ -161,7 +161,7 @@ public class GridSingleton : Singleton<GridSingleton>
 
 
 
-	public List<GridTile> getNeighbours(GridTile currentTile)
+	public List<GridTile> GetNeighbours(GridTile currentTile)
 	{
 		List<GridTile> neighbours = new List<GridTile>();
 

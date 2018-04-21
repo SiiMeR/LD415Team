@@ -14,7 +14,6 @@ public class Projectile : MonoBehaviour {
 			transform.Translate(separation.normalized * speed * Time.deltaTime);
 			if (separation.sqrMagnitude < 0.1) {
 				target.Health -= damage;
-				print(target.Health);
 				Destroy(gameObject);
 			}
 		}

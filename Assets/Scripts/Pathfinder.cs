@@ -56,7 +56,7 @@ public class Pathfinder : Singleton<Pathfinder>
 				
 			}
 
-			foreach (var neighbour in grid.getNeighbours(currentTile))
+			foreach (var neighbour in grid.GetNeighbours(currentTile))
 			{
 
 

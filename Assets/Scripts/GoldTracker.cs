@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 public class GoldTracker : MonoBehaviour {
-	public static int gold = 0;
+	private static int gold = 0;
 	public static int Gold {
 		get {
 			return gold;

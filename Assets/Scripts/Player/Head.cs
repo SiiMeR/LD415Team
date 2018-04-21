@@ -59,6 +59,12 @@ public class Head : MonoBehaviour {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
 			Move();
+
+			//TEMPORARY
+			if (GoldTracker.Gold > 10) {
+				Grow();
+				GoldTracker.Gold -= 10;
+			}
 		}		
 	}
 

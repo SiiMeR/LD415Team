@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilesPerSecond: 1
   neck: {fileID: 0}
-  bodyPrefab: {fileID: 1616321227506912, guid: 04b3f3b61b1f7234a810154df795d840, type: 2}
+  bodyPrefab: {fileID: 1219891222122456, guid: 04b3f3b61b1f7234a810154df795d840, type: 2}
 --- !u!212 &212488847680116522
 SpriteRenderer:
   m_ObjectHideFlags: 1
