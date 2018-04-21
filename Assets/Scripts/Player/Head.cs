@@ -68,12 +68,12 @@ public class Head : MonoBehaviour {
 		int newY = (int) (transform.position.y + moveDirection.y);
 		Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + moveDirection;
 		if (newX < 0) {
-			newX = (int) (GridSingleton.Instance.gridWorldSize.x - 1);
+			newX = GridSingleton.Instance.gridWorldSize.x - 1;
 		} else if (newX == GridSingleton.Instance.gridWorldSize.x) {
 			newX = 0;
 		}
 		if (newY < 0) {
-			newY = (int) (GridSingleton.Instance.gridWorldSize.y - 1);
+			newY = GridSingleton.Instance.gridWorldSize.y - 1;
 		} else if (newY == GridSingleton.Instance.gridWorldSize.y) {
 			newY = 0;
 		}

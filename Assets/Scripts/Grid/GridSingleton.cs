@@ -7,7 +7,7 @@ public class GridSingleton : Singleton<GridSingleton>
 	
 	public Transform StartPosition;
 	public LayerMask LayerMask;
-	public Vector2 gridWorldSize;
+	public Vector2Int gridWorldSize;
 	public float nodeRadius;
 	public float Distance;
 
