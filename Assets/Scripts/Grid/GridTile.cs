@@ -15,7 +15,7 @@ public class GridTile {
 	public int gCost;
 	public int hCost;
 
-	public TileType type;
+	public TileType type = TileType.EMPTY;
 
 	public int FCost {
 		get { return gCost + hCost; }
