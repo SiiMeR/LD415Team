@@ -64,8 +64,8 @@ public class Head : MonoBehaviour {
             //    Debug.Log("Game Over");  
             //}
 			transform.Translate(moveDirection, Space.World);
-            GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
-            
+            GridSingleton.Instance.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
+
             lastDirection = direction;
 		}		
 	}
