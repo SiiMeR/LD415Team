@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking.Types;
 
 public class GridTile {
 	
@@ -28,16 +27,6 @@ public class GridTile {
 		Position = pos;
 		this.gridX = gridX;
 		this.gridY = gridY;
-		
-	}
-	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		
 	}
 }

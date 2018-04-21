@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class EnemyTracker : MonoBehaviour {
-	static List<Enemy> enemies = new List<Enemy>();
+	public static List<Enemy> enemies = new List<Enemy>();
 
 	public static Enemy GetNearest(Vector3 position) {
 		Enemy nearest = null;
