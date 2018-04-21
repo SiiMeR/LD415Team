@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void Die() {
-		snakeBase.Gold += gold;
+		GoldTracker.Gold += gold;
 		EnemyTracker.enemies.Remove(this);
         Destroy(gameObject);
     }
