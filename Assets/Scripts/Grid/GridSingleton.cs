@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class GridSingleton : MonoBehaviour
 {
-
+	[SerializeField] private GameObject bgTile;
+	
+	
 	public Transform StartPosition;
 	public LayerMask LayerMask;
 	public Vector2 gridWorldSize;
 	public float nodeRadius;
 	public float Distance;
+
+	public float unitsPerTile;
 	
 	public static int width;
 	public static int height;
@@ -48,7 +52,7 @@ public class GridSingleton : MonoBehaviour
 
 		Vector3 bottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 -
 												  Vector3.forward * gridWorldSize.y / 2;
-
+		
 		for (int y = 0; y < gridSizeY; y++)
 		{
 			for (int x = 0; x < gridSizeY; x++)
@@ -58,10 +62,11 @@ public class GridSingleton : MonoBehaviour
 
 				bool wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
 				
-				
 				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y);
-		//		Set(y,x, wall? TileType.SNAKE : TileType.EMPTY);
-				
+
+				Instantiate(bgTile, new Vector3(x * unitsPerTile, y * unitsPerTile, 0), Quaternion.identity);
+				//		Set(y,x, wall? TileType.SNAKE : TileType.EMPTY);
+
 			}		
 		}
 	}
