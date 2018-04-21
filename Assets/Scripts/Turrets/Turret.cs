@@ -6,15 +6,23 @@ public class Turret : MonoBehaviour {
 	public GameObject projectile;
 
 	float timer = 0;
+    public AudioClip shootSound;
+    private AudioSource shootingSound;
 
-	void Update() {
+    private void Awake()
+    {
+        shootingSound = GetComponent<AudioSource>();
+    }
+
+    void Update() {
 		timer += Time.deltaTime;
 		if (timer > cooldown) {
 			timer -= cooldown;
 
 			Enemy target = EnemyTracker.GetNearest(transform.position);
 			if (target != null) {
-				Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+                shootingSound.PlayOneShot(shootSound, 1.0f);
+                Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
 				shotRef.target = target;
 			}
 		}

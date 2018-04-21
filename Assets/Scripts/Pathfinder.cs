@@ -7,10 +7,6 @@ public class Pathfinder : Singleton<Pathfinder>
 {
 
 	private GridSingleton grid;
-
-	public Transform startPos;
-
-	public Transform endPos;
 	
 	 
 	// Use this for initialization
@@ -22,11 +18,13 @@ public class Pathfinder : Singleton<Pathfinder>
 	// Update is called once per frame
 	void Update ()
 	{
-		FindPath(startPos.position, endPos.position);
 	}
 
 	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos)
 	{
+		print(startPos);
+	//	print(grid);
+		print(grid.Get((int) startPos.x, (int) startPos.y));
 
 		GridTile startTile = grid.Get((int) startPos.x,(int) startPos.y);
 		GridTile endTile = grid.Get((int) endPos.x,(int) endPos.y);
