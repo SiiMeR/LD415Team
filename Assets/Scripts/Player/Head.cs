@@ -66,22 +66,21 @@ public class Head : MonoBehaviour {
 		//Calculate next position
 		int newX = (int) (transform.position.x + moveDirection.x);
 		int newY = (int) (transform.position.y + moveDirection.y);
-		Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + moveDirection;
 		if (newX < 0) {
-			newX = (int) (GridSingleton.Instance.gridWorldSize.x - 1);
+			newX = GridSingleton.Instance.gridWorldSize.x - 1;
 		} else if (newX == GridSingleton.Instance.gridWorldSize.x) {
 			newX = 0;
 		}
 		if (newY < 0) {
-			newY = (int) (GridSingleton.Instance.gridWorldSize.y - 1);
+			newY = GridSingleton.Instance.gridWorldSize.y - 1;
 		} else if (newY == GridSingleton.Instance.gridWorldSize.y) {
 			newY = 0;
 		}
 
 		//Check if something is in the way
 		GridTile tile = GridSingleton.Instance.Get(newX, newY);
-		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.ENEMY) {
-			Application.Quit(); //BAD STUFF
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE) {
+			Application.Quit(); //TODO: BAD STUFF
 		} else {
 			transform.position = new Vector3(newX, newY);
 			GridSingleton.Instance.Set(newX, newY, TileType.SNAKE);

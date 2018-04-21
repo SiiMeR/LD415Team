@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {	
-	[SerializeField] private int _health = 100;
+	[SerializeField] private float _health = 100;
     Base snakeBase;
 
-	public int Health
+	public float Health
 	{
 		get { return _health; }
 		set

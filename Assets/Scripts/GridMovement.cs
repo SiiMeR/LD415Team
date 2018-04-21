@@ -12,7 +12,7 @@ public class GridMovement : MonoBehaviour {
 
 	void Start () {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * _tilesPerSecond));
-		MoveDirection = Vector2.right;
+		MoveDirection = Vector2.down;
 	}
 
 	void FixedUpdate() {

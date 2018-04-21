@@ -19,11 +19,12 @@ public class Body : MonoBehaviour {
 	}
 
 	public void Grow(GameObject bodyPrefab) {
-		if (next == null) {
+        if (next == null) {
 			GameObject go = Instantiate(bodyPrefab, transform.position, Quaternion.identity);
 			next = go.GetComponent<Body>();
 		} else {
 			next.Grow(bodyPrefab);
-		}
+           
+        }
 	}
 }

@@ -5,6 +5,10 @@ using UnityEngine;
 public class GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
+	public List<GameObject> otherTiles;
+	public GameObject specialTile;
+
+	public Transform StartPosition;
 	
 	//public Transform StartPosition;
 	public LayerMask LayerMask;
@@ -43,7 +47,6 @@ public class GridSingleton : Singleton<GridSingleton>
 	
 	private void Awake()
 	{
-	//	FinalPath = new List<GridTile>();	
 		nodeDiameter = nodeRadius * 2;  
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
 		
@@ -70,8 +73,6 @@ public class GridSingleton : Singleton<GridSingleton>
 				Vector3 worldPoint = bottomLeft +
 				                     Vector3.right * (x * nodeDiameter + nodeRadius) +
 				                     Vector3.up * (y * nodeDiameter + nodeRadius);
-				
-//				print(worldPoint);
 
 				//var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
 				
@@ -80,8 +81,18 @@ public class GridSingleton : Singleton<GridSingleton>
 				Set(x,y, tileempty);
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{
-					
-					GameObject tile = Instantiate(bgTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
+					float randomNumber = Random.Range(0f, 1f);
+					GameObject randomTile = bgTile;
+					for (int i = 0; i < otherTiles.Count; i++) {
+						if (randomNumber > 1 - 0.1f * (i + 1)) {
+							randomTile = otherTiles[i];
+							break;
+						}
+					}
+					if (y == gridSizeY - BGUnitsPerTile && x == gridSizeX - BGUnitsPerTile) {
+						randomTile = specialTile;
+					}
+					GameObject tile = Instantiate(randomTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
 					tile.transform.SetParent(transform);   
 				
 				}
