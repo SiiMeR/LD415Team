@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Base : MonoBehaviour {
 	public int hp;
