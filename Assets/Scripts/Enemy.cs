@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {	
-	[SerializeField] private int _health = 100;
+	[SerializeField] private int _health = 3;
     Base snakeBase;
 
 	public int Health

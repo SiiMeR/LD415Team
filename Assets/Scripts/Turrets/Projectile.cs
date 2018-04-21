@@ -6,10 +6,21 @@ public class Projectile : MonoBehaviour {
 	public Enemy target;
 
 	void Update() {
-		Vector3 separation = target.transform.position - transform.position;
-		transform.Translate(separation.normalized * speed * Time.deltaTime);
-		if (separation.sqrMagnitude < 0.1) {
-			//HURT THEM!
-		}
+        if (target == null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Vector3 separation = target.transform.position - transform.position;
+            transform.Translate(separation.normalized * speed * Time.deltaTime);
+            if (separation.sqrMagnitude < 0.1)
+            {
+                target.Health -= 1;
+                print(target.Health);
+                Destroy(gameObject);
+
+            }
+        }
 	}
 }

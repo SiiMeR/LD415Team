@@ -13,8 +13,12 @@ public class Turret : MonoBehaviour {
 			timer -= cooldown;
 
 			Enemy target = EnemyTracker.GetNearest(transform.position);
-			Projectile shotRef = Instantiate(projectile).GetComponent<Projectile>();
-			shotRef.target = target;
+            if (target != null)
+            {
+                Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+                shotRef.target = target;
+            }
+			
 		}
 	}
 }
