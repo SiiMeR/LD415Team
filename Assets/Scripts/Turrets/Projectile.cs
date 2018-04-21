@@ -4,9 +4,8 @@ public class Projectile : MonoBehaviour {
 	public float damage;
 	public float speed;
 	public Enemy target;
-    public Base snakeBase;
-
-	void Update() {
+   
+    void Update() {
 		if (target == null) {
 			Destroy(gameObject);
 		} else {
