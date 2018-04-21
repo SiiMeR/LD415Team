@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public class Base : MonoBehaviour {
-	public int hp;
-	public int x, y;
+	
+	public int Hp;
 
 	void Start() {
-		GridSingleton.Set(x, y, GridTile.BASE);
+		GridSingleton.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y), TileType.BASE);
 	}
 }
