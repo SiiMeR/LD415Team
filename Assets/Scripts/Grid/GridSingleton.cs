@@ -13,10 +13,10 @@ public class GridSingleton : Singleton<GridSingleton>
 
 	public int BGUnitsPerTile = 4;
 	
-	public  int width;
-	public  int height;
+	public int width;
+	public int height;
 	
-	private  GridTile[] grid; // = new GridTile[width * height];
+	private GridTile[] grid; // = new GridTile[width * height];
 
 	public List<GridTile> FinalPath;
 	private float nodeDiameter;
@@ -92,7 +92,7 @@ public class GridSingleton : Singleton<GridSingleton>
 		{
 			foreach (var node in grid)
 			{
-				if (node.IsWall)
+				if (node.isWall)
 				{
 					Gizmos.color = Color.white;
 				}

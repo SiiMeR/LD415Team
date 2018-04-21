@@ -12,7 +12,7 @@ public class Head : MonoBehaviour {
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 5; i++) {
 			Grow();
 		}
 	}
@@ -58,18 +58,35 @@ public class Head : MonoBehaviour {
 			if (neck != null) {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
-            Vector2 temp = new Vector2(transform.position.x , transform.position.y) + moveDirection;
-            
-            //int GridSingleton
-            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE|| TileType.ENEMY)
-            //{
-            //    Debug.Log("Game Over");  
-            //}
-			transform.Translate(moveDirection, Space.World);
-            GridSingleton.Instance.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
-
-            lastDirection = direction;
+			Move();
 		}		
+	}
+
+	private void Move() {
+		//Calculate next position
+		int newX = (int) (transform.position.x + moveDirection.x);
+		int newY = (int) (transform.position.y + moveDirection.y);
+		Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + moveDirection;
+		if (newX < 0) {
+			newX = GridSingleton.Instance.width - 1;
+		} else if (newX == GridSingleton.Instance.width) {
+			newX = 0;
+		}
+		if (newY < 0) {
+			newY = GridSingleton.Instance.height - 1;
+		} else if (newY == GridSingleton.Instance.height) {
+			newY = 0;
+		}
+
+		//Check if something is in the way
+		GridTile tile = GridSingleton.Instance.Get(newX, newY);
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE) {
+			Application.Quit(); //BAD STUFF
+		} else {
+			transform.position = new Vector3(newX, newY);
+			GridSingleton.Instance.Set(newX, newY, TileType.SNAKE);
+			lastDirection = direction;
+		}
 	}
 
     public void Grow() {
