@@ -8,13 +8,14 @@ public class Projectile : MonoBehaviour {
 	void Update() {
 		if (target == null) {
 			Destroy(gameObject);
-		}
-		Vector3 separation = target.transform.position - transform.position;
-		transform.Translate(separation.normalized * speed * Time.deltaTime);
-		if (separation.sqrMagnitude < 0.1) {
-			target.Health -= damage;
-			print(target.Health);
-			Destroy(gameObject);
+		} else {
+			Vector3 separation = target.transform.position - transform.position;
+			transform.Translate(separation.normalized * speed * Time.deltaTime);
+			if (separation.sqrMagnitude < 0.1) {
+				target.Health -= damage;
+				print(target.Health);
+				Destroy(gameObject);
+			}
 		}
 	}
 }
