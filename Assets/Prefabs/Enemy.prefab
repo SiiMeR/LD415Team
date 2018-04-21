@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  snakeBase: {fileID: 0}
 --- !u!114 &114982220105526904
 MonoBehaviour:
   m_ObjectHideFlags: 1

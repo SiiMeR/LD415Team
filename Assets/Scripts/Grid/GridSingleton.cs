@@ -67,6 +67,8 @@ public class GridSingleton : Singleton<GridSingleton>
 				var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
 				
 				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y);
+				
+				Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
 
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{

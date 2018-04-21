@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114687641853492602, guid: 1a3577553141d584a8369d95a3a151e1,
+        type: 2}
+      propertyPath: snakeBase
+      value: 
+      objectReference: {fileID: 1011105442}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a3577553141d584a8369d95a3a151e1, type: 2}
   m_IsPrefabParent: 0
@@ -197,6 +202,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b5bafad65be1e04fbe33322c23d684e, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1011105442 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114876919633792424, guid: 4b5bafad65be1e04fbe33322c23d684e,
+    type: 2}
+  m_PrefabInternal: {fileID: 622390563}
+  m_Script: {fileID: 11500000, guid: 9e52b599dc0cbf1469d8952ef599a55b, type: 3}
 --- !u!1001 &1016389428
 Prefab:
   m_ObjectHideFlags: 0
