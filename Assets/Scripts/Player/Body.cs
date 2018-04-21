@@ -5,13 +5,13 @@ public class Body : MonoBehaviour {
 
 	public void Move(Vector3 pos) {
 		if (next != null) {
-			next.Move(transform.position);
+            next.Move(transform.position);
 		}
         else
         {
             GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.EMPTY);
         }
-		transform.position = pos;
+        transform.position = pos;
 	}
 
 	public void Delete() {
