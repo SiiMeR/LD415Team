@@ -15,6 +15,10 @@ public class GoldTracker : MonoBehaviour {
 
 	public static Text goldText;
 
+	void Start() {
+		goldText = GetComponent<Text>();
+	}
+
 	public static void UpdateGoldText() {
 		goldText.text = "Gold: " + gold.ToString();
 	}
