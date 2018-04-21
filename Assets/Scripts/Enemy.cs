@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
 			{
 				_health = value;	
 			}
-
 			
 		}
 	}
