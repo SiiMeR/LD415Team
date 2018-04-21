@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
 	
 	[SerializeField] private int _health = 100;
+    Base snakeBase;
 
 	public int Health
 	{
@@ -38,6 +39,25 @@ public class Enemy : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
-	}
+        
+    }
+
+    private void FixedUpdate()
+    {
+        Debug.Log("ENEMY COORDINATES");
+        Debug.Log(transform.position);
+        GameObject obj = GameObject.FindWithTag("Base");
+        Debug.Log("BASE COORDINATES");
+        Debug.Log(obj.transform.position);
+        if ((int) transform.position.x == (int) obj.transform.position.x && (int) transform.position.y == (int) obj.transform.position.y) {
+            DamageBase();
+        }
+    }
+
+    public void DamageBase()
+    {
+        snakeBase.Hp -= 1;
+        Destroy(gameObject);
+    }
+
 }
