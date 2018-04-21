@@ -63,17 +63,23 @@ public class GridSingleton : Singleton<GridSingleton>
 			{
 				Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) +
 				                     Vector3.up * (y * nodeDiameter + nodeRadius);
-				
-				var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
-				
-				grid[y * gridSizeX + x] = new GridTile(wall, worldPoint, x, y, TileType.EMPTY);
-				
-				Debug.DrawLine(worldPoint - Vector3.left, worldPoint + Vector3.right);
 
+				//var wall = !Physics.CheckBox(worldPoint, new Vector3(nodeRadius, nodeRadius, nodeRadius), Quaternion.identity, LayerMask);
+				
+				grid[y * gridSizeX + x] = new GridTile(worldPoint, x, y, TileType.EMPTY);
+				
+				grid[y * gridSizeX + x] = new GridTile(worldPoint, x, y, TileType.EMPTY);
 				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
 				{
+					
 					GameObject tile = Instantiate(bgTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
 					tile.transform.SetParent(transform);   
+				
+				}
+				else
+				{
+					
+				
 				}
 				
 
@@ -91,7 +97,7 @@ public class GridSingleton : Singleton<GridSingleton>
 		{
 			foreach (var node in grid)
 			{
-				if (node.IsWall)
+				if (node.type == TileType.SNAKE)
 				{
 					Gizmos.color = Color.white;
 				}

@@ -8,7 +8,6 @@ public class GridTile {
 	public int gridX;
 	public int gridY;
 
-	public bool IsWall;
 	public Vector3 Position;
 	
 	public GridTile Parent;
@@ -23,10 +22,9 @@ public class GridTile {
 
 	}
 
-	public GridTile(bool isWall, Vector3 pos, int gridX, int gridY, TileType type)
+	public GridTile( Vector3 pos, int gridX, int gridY, TileType type)
 	{
 		this.type = type;
-		this.IsWall = isWall;
 		Position = pos;
 		this.gridX = gridX;
 		this.gridY = gridY;
