@@ -53,8 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1035478451523302, guid: 1a3577553141d584a8369d95a3a151e1, type: 2}
+  - {fileID: 1792747487226312, guid: c80240a017427824fb8c824bca01f6b3, type: 2}
   cooldown: 5
+  waveCooldown: 15
 --- !u!212 &212248906570018484
 SpriteRenderer:
   m_ObjectHideFlags: 1
