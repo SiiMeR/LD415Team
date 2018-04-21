@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour {
 
 			Enemy target = EnemyTracker.GetNearest(transform.position);
 			if (target != null) {
-				Projectile shotRef = Instantiate(projectile).GetComponent<Projectile>();
+				Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
 				shotRef.target = target;
 			}
 		}
