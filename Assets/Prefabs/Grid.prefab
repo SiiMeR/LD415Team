@@ -61,7 +61,7 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 256
-  gridWorldSize: {x: 12, y: 12}
+  gridWorldSize: {x: 24, y: 24}
   nodeRadius: 0.5
   Distance: 0
   BGUnitsPerTile: 4

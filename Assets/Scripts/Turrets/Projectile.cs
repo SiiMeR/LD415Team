@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour {
 	public Enemy target;
 
 	void Update() {
+
 		if (target == null) {
 			Destroy(gameObject);
 		} else {
