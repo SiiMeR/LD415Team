@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
 	private void Die()
 	{
 		print("Minion died");
-	}
+        Destroy(gameObject);
+    }
 
 	// Use this for initialization
 	void Start () 
@@ -44,20 +45,18 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("ENEMY COORDINATES");
-        Debug.Log(transform.position);
-        GameObject obj = GameObject.FindWithTag("Base");
-        Debug.Log("BASE COORDINATES");
-        Debug.Log(obj.transform.position);
-        if ((int) transform.position.x == (int) obj.transform.position.x && (int) transform.position.y == (int) obj.transform.position.y) {
+
+        if (Vector3.Distance(transform.position, snakeBase.transform.position) < 0.1f)
+        {
             DamageBase();
         }
+        
     }
 
     public void DamageBase()
     {
         snakeBase.hp -= 1;
-        Destroy(gameObject);
+        Die();
     }
 
 }
