@@ -21,7 +21,8 @@ public class Turret : MonoBehaviour {
 
 			Enemy target = EnemyTracker.GetNearest(transform.position);
 			if (target != null) {
-                shootingSound.PlayOneShot(shootSound, 1.0f);
+             //   shootingSound.PlayOneShot(shootSound, 1.0f);
+				AudioManager.instance.Play("shootingSound"); // string nimi
                 Projectile shotRef = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
 				shotRef.target = target;
 			}
