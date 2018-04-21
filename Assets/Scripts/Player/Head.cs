@@ -58,17 +58,16 @@ public class Head : MonoBehaviour {
 			if (neck != null) {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
-            Debug.Log(transform.position.x);
-            Debug.Log(transform.position.y);
-            Debug.Log(GridSingleton.Get((int)transform.position.x, (int)transform.position.y));
+         
             Vector2 temp = new Vector2(transform.position.x , transform.position.y) + moveDirection;
-            Debug.Log("---");
-            Debug.Log(temp);
-            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE)
+
+            // CHECK IF SNAKE HEAD HITS ENEMY OR IT'S BODY
+            //if (GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.SNAKE || GridSingleton.Get(temp). GET_THE_TILE_TYPE_OR_SOMETHING == TileType.ENEMY)
             //{
             //    Debug.Log("Game Over");  
             //}
-			transform.Translate(moveDirection, Space.World);
+
+            transform.Translate(moveDirection, Space.World);
             GridSingleton.Set(new Vector2Int((int)transform.position.x, (int)transform.position.y), TileType.SNAKE);
             
             lastDirection = direction;
