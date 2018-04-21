@@ -30,6 +30,16 @@ public class GridSingleton : Singleton<GridSingleton>
 		return grid[row * gridSizeX + col];
 	}
 
+	public GridTile Get(Vector3 position)
+	{
+		return Get((int) position.x, (int) position.y);
+	}
+
+	public void Empty(Vector3 position)
+	{
+		Get(position).type = TileType.EMPTY;
+	}
+	
 	public void Set(int col, int row, TileType type) {
 		grid[row * gridSizeX + col].type = type;
 	}
@@ -135,13 +145,7 @@ public class GridSingleton : Singleton<GridSingleton>
 					Gizmos.color = Color.yellow;
 				}
 
-				if (FinalPath != null)
-				{
-					if (FinalPath.Contains(node))
-					{
-						Gizmos.color = Color.red;
-					}
-				}
+
 
 		
 
@@ -149,6 +153,7 @@ public class GridSingleton : Singleton<GridSingleton>
 				c.a = 0.99f;
 				Gizmos.color = c;
 				Gizmos.DrawCube(new Vector3(node.Position.x -offset, node.Position.y -offset), new Vector3(0.7f,0.7f,0.7f) * (nodeDiameter - Distance));
+				
 			}
 		}
 	}

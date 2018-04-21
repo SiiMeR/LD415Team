@@ -20,7 +20,7 @@ public class Pathfinder : Singleton<Pathfinder>
 	{
 	}
 
-	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos)
+	public List<GridTile> FindPath(Vector3 startPos, Vector3 endPos, bool ignoreCollisions = false)
 	{
 		GridTile startTile = grid.Get((int) startPos.x,(int) startPos.y);
 		GridTile endTile = grid.Get((int) endPos.x,(int) endPos.y);
@@ -58,11 +58,24 @@ public class Pathfinder : Singleton<Pathfinder>
 
 			foreach (var neighbour in grid.getNeighbours(currentTile))
 			{
-				if (neighbour.type == TileType.SNAKE || closedList.Contains(neighbour))
+
+
+				if (closedList.Contains(neighbour))
 				{
 					continue;
-
 				}
+				
+				if (ignoreCollisions)
+				{
+					
+				}
+				
+				else if ((neighbour.type == TileType.SNAKE || closedList.Contains(neighbour)))
+				{
+					continue;
+				}
+				
+
 
 				int movecost = currentTile.gCost + GetManHTDist(currentTile, neighbour);
 
@@ -81,7 +94,7 @@ public class Pathfinder : Singleton<Pathfinder>
 
 			
 		}
-		
+
 		return null;
 	}
 
