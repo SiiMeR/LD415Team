@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0543fe805424df99fe08ce744cbe49, type: 3}
+  m_Name: pose
+  m_EditorClassIdentifier: 
+  m_PoseEntries:
+  - path: Bones/Root
+    localPosition: {x: 0.12842935, y: -0.8240527, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.71252483, w: 0.701647}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Root/Body
+    localPosition: {x: 0.4500001, y: 0, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.0072434796, w: 0.99997383}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Root/Body/leftsoot
+    localPosition: {x: 0.10275054, y: 0.7076272, z: 0}
+    localRotation: {x: 0, y: 0, z: 0.022143621, w: 0.9997548}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Root/Body/rightsoot
+    localPosition: {x: 0.030173039, y: -0.49125153, z: 0}
+    localRotation: {x: 0, y: 0, z: -0.020039883, w: 0.99979925}
+    localScale: {x: 1, y: 1, z: 1}
+  - path: Bones/Root/Body/blobleft
+    localPosition: {x: 1.2461034, y: 0.18536621, z: 0}
+    localRotation: {x: -0, y: -0, z: 0.0015600607, w: 0.9999988}
+    localScale: {x: 1.0000013, y: 1.0000013, z: 1}
+  - path: Bones/Root/Body/blobright
+    localPosition: {x: 1.2467247, y: -0.11589494, z: 0}
+    localRotation: {x: -0, y: -0, z: -0.0025134117, w: 0.99999684}
+    localScale: {x: 1.0000008, y: 1.0000008, z: 1}

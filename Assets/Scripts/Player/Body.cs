@@ -5,6 +5,27 @@ public class Body : MonoBehaviour
 {
 	public Body Next;
 
+	public void Awake()
+	{
+		GameObject bodiesHolder = GameObject.FindGameObjectWithTag("Bodies");
+
+		if (bodiesHolder)
+			transform.parent = bodiesHolder.transform;
+		else
+		{
+			GameObject go = new GameObject("Bodies") {
+				tag = "Bodies"
+			};
+			transform.parent = new GameObject("Bodies").transform;
+			
+		}
+
+		
+
+
+		// TODO CHANGE IF BBUGGY
+	}
+	
 	public void Move(Vector3 pos) {
 		if (Next != null) {
             Next.Move(transform.position);
@@ -33,7 +54,7 @@ public class Body : MonoBehaviour
 	public void DeleteSlow(float secondsPerDelete)
 	{	
 		
-		StartCoroutine(slowDeath(secondsPerDelete));
+		StartCoroutine(SlowDeath(secondsPerDelete));
 	}
 
 
@@ -56,7 +77,7 @@ public class Body : MonoBehaviour
 		}
 	}
 
-	IEnumerator slowDeath(float seconds)
+	IEnumerator SlowDeath(float seconds)
 	{
 		SetColors();
 		SetEmpty();

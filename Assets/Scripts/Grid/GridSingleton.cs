@@ -15,6 +15,8 @@ public class 	GridSingleton : Singleton<GridSingleton>
 	public Vector2Int gridWorldSize;
 	public float nodeRadius;
 	public float Distance;
+	public float foodSpawnDelay;
+	public GameObject foodPrefab;
 
 	public int BGUnitsPerTile = 4;
 	
@@ -46,8 +48,24 @@ public class 	GridSingleton : Singleton<GridSingleton>
 
 	public void Set(Vector2Int colRow, TileType type)
 	{
-
+		
 		grid[colRow.y * gridSizeX + colRow.x].type = type;	
+	}
+
+	public void Set(Vector2Int colROw, TileType type, Vector3 size)
+	{
+		int bottomX = (int) (colROw.x - size.x / 2);
+		int bottomY = (int) (colROw.y - size.y / 2);
+		
+	//	Vector2Int bottomLeft = new Vector2Int(bottomX, bottomY);
+
+		for (int x = bottomX + 1; x < bottomX + size.x + 1; x++)
+		{	
+			for (int y = bottomY + 1; y < bottomY + size.y + 1; y++)
+			{
+				Set(new Vector2Int(x,y), type);
+			}
+		}
 	}
 
 	public void Set(int col, int row, GridTile tile)
@@ -65,6 +83,10 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		grid = new GridTile[gridSizeX *  gridSizeY];
 		
 		CreateGrid();
+	}
+
+	private void Start() {
+		StartCoroutine(SpawnFood());
 	}
 
 	private void CreateGrid()
@@ -90,7 +112,7 @@ public class 	GridSingleton : Singleton<GridSingleton>
 				
 				Set(x,y, tileempty);
 				
-				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
+				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)	
 				{
 					float randomNumber = Random.Range(0f, 1f);
 					GameObject randomTile = bgTile;
@@ -109,7 +131,6 @@ public class 	GridSingleton : Singleton<GridSingleton>
 				}
 				else
 				{
-					
 				
 				}
 				
@@ -128,21 +149,35 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		{
 			foreach (var node in grid)
 			{
-				if (node.type == TileType.SNAKE)
+
+				if (node.type == TileType.EMPTY)
+				{
+					Gizmos.color = Color.yellow;
+				}
+				else if (node.type == TileType.SNAKE)
 				{
 					Gizmos.color = Color.white;
 				}
-				else if(node.type == TileType.BASE)
+
+				else if (node.type == TileType.PICKUP)
 				{
-					Gizmos.color = Color.magenta;
+					Gizmos.color = Color.green;
+				}
+				else if (node.type == TileType.SPAWNER)
+				{
+					Gizmos.color = Color.black;
 				}
 				else if (node.type == TileType.ENEMY)
 				{
 					Gizmos.color = Color.cyan;
 				}
+				else if(node.type == TileType.BASE)
+				{
+					Gizmos.color = Color.magenta;
+				}
 				else
 				{
-					Gizmos.color = Color.yellow;
+				//	
 				}
 
 
@@ -220,5 +255,17 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		}
 
 		return neighbours;
+	}
+
+	IEnumerator SpawnFood() {
+		while (true) {
+			yield return new WaitForSeconds(foodSpawnDelay);
+			int x = Random.Range(0, gridSizeX);
+			int y = Random.Range(0, gridSizeY);
+			if (Get(x, y).type == TileType.EMPTY) {
+				Set(x, y, TileType.PICKUP);
+				Instantiate(foodPrefab, new Vector3(x, y), Quaternion.identity);
+			}
+		}
 	}
 }

@@ -16,7 +16,7 @@ public class Head : MonoBehaviour {
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 2; i++) {
 			Grow();
 		}
 	}
@@ -63,13 +63,14 @@ public class Head : MonoBehaviour {
 				neck.Move(transform.position + new Vector3(0, 0, 0.01f));
 			}
 			Move();
-
-			//TEMPORARY
-			if (GoldTracker.Gold > 10) {
-				Grow();
-				GoldTracker.Gold -= 10;
-			}
 		}		
+	}
+
+	private void CheckEdible(int x, int y) {
+		if (GridSingleton.Instance.Get(x, y).type == TileType.PICKUP) {
+			Grow();
+			Destroy(GameObject.FindGameObjectWithTag("Food"));
+		}
 	}
 
 	private void Move() {
@@ -90,11 +91,12 @@ public class Head : MonoBehaviour {
 
 		//Check if something is in the way
 		GridTile tile = GridSingleton.Instance.Get(newX, newY);
-		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE)
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.ENEMY || tile.type == TileType.SPAWNER)
 		{
 			StartCoroutine(DIE());
 
 		} else {
+			CheckEdible(newX, newY);
 			transform.position = new Vector3(newX, newY);
 			GridSingleton.Instance.Set(newX, newY, TileType.SNAKE);
 			lastDirection = direction;

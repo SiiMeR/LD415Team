@@ -5,17 +5,32 @@ public class Projectile : MonoBehaviour {
 	public float speed;
 	public Enemy target;
 
+	private Vector3 lastKnownPosition;
+	void Awake()
+	{
+		transform.parent = GameObject.FindGameObjectWithTag("Bullets").transform;
+	}
 	void Update() {
+		
+		Vector3 targetPos = lastKnownPosition;
 
-		if (target == null) {
-			Destroy(gameObject);
-		} else {
-			Vector3 separation = target.transform.position - transform.position;
-			transform.Translate(separation.normalized * speed * Time.deltaTime);
-			if (separation.sqrMagnitude < 0.1) {
+		if (target)
+		{
+			targetPos = target.transform.position;
+			lastKnownPosition = targetPos;
+		}
+		
+		Vector3 separation = targetPos - transform.position;
+		
+		transform.Translate(separation.normalized * speed * Time.deltaTime);
+			
+		if (separation.sqrMagnitude < 0.1) {
+
+			if (target)
+			{
 				target.Health -= damage;
-				Destroy(gameObject);
 			}
+			Destroy(gameObject);
 		}
 	}
 }

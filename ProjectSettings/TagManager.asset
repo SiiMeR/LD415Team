@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Base
   - deathscreen
+  - Bullets
+  - Head
+  - Bodies
+  - Food
   layers:
   - Default
   - TransparentFX

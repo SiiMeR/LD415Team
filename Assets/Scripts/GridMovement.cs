@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Collections;
 using UnityEngine;
 
 public class GridMovement : MonoBehaviour {
@@ -15,6 +15,10 @@ public class GridMovement : MonoBehaviour {
 	private Base baas;
 
 	public List<GridTile> closestPath;
+
+	private Vector3 realLoc;
+
+	private TileType oldType;
 	
 	void Start () {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * _tilesPerSecond));
@@ -22,6 +26,7 @@ public class GridMovement : MonoBehaviour {
 		baas = GameObject.FindGameObjectWithTag("Base").GetComponent<Base>();
 		
 		closestPath = new List<GridTile>();
+		realLoc = transform.position;
 		UpdatePaths();
 	}
 
@@ -32,22 +37,63 @@ public class GridMovement : MonoBehaviour {
 			counter = 0;
 			
 			UpdatePaths();
-			
-			transform.Translate(MoveDirection);
-			
 
-			if (GridSingleton.Instance.Get(transform.position).type == TileType.SNAKE)
+			Vector3 startPos = transform.position;
+			Vector3 endPos = transform.position + new Vector3(MoveDirection.x, MoveDirection.y);
+			realLoc = endPos;
+			StartCoroutine(VisualLerp(startPos, endPos, 1 / _tilesPerSecond));
+			
+			GridTile oldTile = GridSingleton.Instance.Get(startPos);
+
+			oldTile.type = oldType;
+			
+			GridTile tile = GridSingleton.Instance.Get(endPos);
+
+			oldType = tile.type;
+			
+			if (tile.type == TileType.SNAKE)
 			{
 				FindObjectOfType<Head>().DeleteBodyAtPos(transform.position);
 			}
+
+			if (tile.type != TileType.SPAWNER)
+			{
+				tile.type = TileType.ENEMY;
+			}
+			
+			
+			
+			
+			if (tile.type != TileType.BASE )
+			{
+				
+				tile.type = TileType.ENEMY;
+			}
+			else
+			{
+				GetComponent<Enemy>().DamageBase();
+			}
+			
 		}
 		
+	}
+
+	IEnumerator VisualLerp(Vector3 startPos, Vector3 endPos, float duration) {
+		float startTime = Time.time;
+		float endTime = startTime + duration;
+
+		while (Time.time < endTime) {
+			transform.position = Vector3.Lerp(startPos, endPos, (Time.time - startTime) / duration);
+			yield return null;
+		}
+
+		transform.position = endPos;
 	}
 
 	void UpdatePaths()
 	{
 
-		List<GridTile> grid = Pathfinder.Instance.FindPath(transform.position, baas.transform.position);
+		List<GridTile> grid = Pathfinder.Instance.FindPath(realLoc, baas.transform.position);
 
 		if (grid != null)
 		{
@@ -55,7 +101,7 @@ public class GridMovement : MonoBehaviour {
 		}
 		else
 		{
-			grid = Pathfinder.Instance.FindPath(transform.position, baas.transform.position, true);
+			grid = Pathfinder.Instance.FindPath(realLoc, baas.transform.position, true);
 			if (grid != null)
 			{
 				closestPath = grid;

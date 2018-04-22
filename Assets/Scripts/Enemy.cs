@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {	
+public class Enemy : MonoBehaviour {
+	public float maxHealth = 100;
 	[SerializeField] private float _health = 100;
 	public int gold = 1;
     Base snakeBase;
+
+	public Image hp;
 
 	public float Health
 	{
@@ -16,19 +20,25 @@ public class Enemy : MonoBehaviour {
 			}
 			else
 			{
-				_health = value;	
+				_health = value;
+				hp.fillAmount = _health / maxHealth;
 			}
 			
 		}
 	}
 
-	private void Die() {
+	public void Die() {
 		GoldTracker.Gold += gold;
 		EnemyTracker.Instance.enemies.Remove(this);
-        Destroy(gameObject);
+		
+		Destroy(gameObject);
+		
+		GridSingleton.Instance.Set((int) transform.position.x, (int) transform.position.y, TileType.EMPTY);
+        
     }
 
 	void Start () {
+		Health = maxHealth;
 		snakeBase = GameObject.FindGameObjectWithTag("Base").GetComponent<Base>();
 		EnemyTracker.Instance.enemies.Add(this);
 	}
@@ -42,7 +52,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void DamageBase() {
-        snakeBase.hp -= 1;
+        snakeBase.HP -= 1;
         Die();
     }
 }
