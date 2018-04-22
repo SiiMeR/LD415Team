@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  cooldown: 1
+  cooldown: 0.2
   projectile: {fileID: 1968705854610742, guid: ad31e91ae9dbd4441ab2f038ffca902c, type: 2}
 --- !u!212 &212210648792505238
 SpriteRenderer:

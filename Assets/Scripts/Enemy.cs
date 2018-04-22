@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour {
 	private void Die() {
 		GoldTracker.Gold += gold;
 		EnemyTracker.Instance.enemies.Remove(this);
+		GridSingleton.Instance.Set((int) transform.position.x, (int) transform.position.y, TileType.EMPTY);
         Destroy(gameObject);
     }
 
