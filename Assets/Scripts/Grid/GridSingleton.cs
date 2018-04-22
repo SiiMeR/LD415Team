@@ -46,8 +46,24 @@ public class 	GridSingleton : Singleton<GridSingleton>
 
 	public void Set(Vector2Int colRow, TileType type)
 	{
-
+		
 		grid[colRow.y * gridSizeX + colRow.x].type = type;	
+	}
+
+	public void Set(Vector2Int colROw, TileType type, Vector3 size)
+	{
+		int bottomX = (int) (colROw.x - size.x / 2);
+		int bottomY = (int) (colROw.y - size.y / 2);
+		
+	//	Vector2Int bottomLeft = new Vector2Int(bottomX, bottomY);
+
+		for (int x = bottomX + 1; x < bottomX + size.x + 1; x++)
+		{	
+			for (int y = bottomY + 1; y < bottomY + size.y + 1; y++)
+			{
+				Set(new Vector2Int(x,y), type);
+			}
+		}
 	}
 
 	public void Set(int col, int row, GridTile tile)
@@ -128,21 +144,27 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		{
 			foreach (var node in grid)
 			{
+
+				if (node.type == TileType.EMPTY)
+				{
+					Gizmos.color = Color.yellow;
+				}
 				if (node.type == TileType.SNAKE)
 				{
 					Gizmos.color = Color.white;
 				}
-				else if(node.type == TileType.BASE)
-				{
-					Gizmos.color = Color.magenta;
-				}
+
 				else if (node.type == TileType.ENEMY)
 				{
 					Gizmos.color = Color.cyan;
 				}
+				else if(node.type == TileType.BASE)
+				{
+				//	Gizmos.color = Color.magenta;
+				}
 				else
 				{
-					Gizmos.color = Color.yellow;
+				//	
 				}
 
 
