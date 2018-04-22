@@ -70,10 +70,7 @@ public static class GameScoreServer
 
             }
 
-            foreach (PlayerScore p in highScoresList)
-            {
-                Debug.Log(p.ToString());
-            }
+ 
 
         }
         return highScoresList;
