@@ -33,13 +33,21 @@ public class GridMovement : MonoBehaviour {
 			
 			UpdatePaths();
 			
+			GridTile oldTile = GridSingleton.Instance.Get(transform.position);
+
+			oldTile.type = TileType.EMPTY;
+			
 			transform.Translate(MoveDirection);
 			
-
-			if (GridSingleton.Instance.Get(transform.position).type == TileType.SNAKE)
+			GridTile tile = GridSingleton.Instance.Get(transform.position);
+	
+			
+			if (tile.type == TileType.SNAKE)
 			{
 				FindObjectOfType<Head>().DeleteBodyAtPos(transform.position);
 			}
+
+			tile.type = TileType.ENEMY;
 		}
 		
 	}
