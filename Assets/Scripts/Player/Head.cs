@@ -127,16 +127,21 @@ public class Head : MonoBehaviour {
 		print("you died, no implementation tho :DDDDDDDDDDDDDDDDDD, press enter to restart");
 
 		Time.timeScale = 0f;
-
+		
+		PlayerPrefs.SetInt("score", GoldTracker.Gold);
+		GameScoreServer.getHighScores();
+		
 		StartCoroutine(FadeToBlack(4.0f));
 		
-		yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+	//	yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 		
 		GameObject.FindGameObjectWithTag("deathscreen").GetComponentInChildren<Text>(true).enabled = false;
 		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		
+		SceneManager.LoadScene("Deaf");
 		
 	//	Application.Quit(); //TODO: BAD STUFF
+		yield break;
 	}
 
 	public void Grow() {

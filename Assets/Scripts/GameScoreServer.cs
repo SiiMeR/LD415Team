@@ -8,8 +8,11 @@ using UnityEngine;
 public static class GameScoreServer
 {
 
-    static string highscoreURL = "https://www.mobileapplication.ga/ludumdare41/highscores";
+    static string highscoreURL = "https://www.mobileapplication.ga/ludumdare41/highscores2/10";
 
+    
+    static public List<PlayerScore> scores = new List<PlayerScore>();
+    
     public static void SendGameScoreToServer(string username, int score)
     {
         ServicePointManager.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
@@ -73,6 +76,8 @@ public static class GameScoreServer
  
 
         }
+
+        scores = highScoresList;
         return highScoresList;
 
     }
