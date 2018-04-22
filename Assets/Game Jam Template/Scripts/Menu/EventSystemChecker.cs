@@ -13,7 +13,7 @@ public class EventSystemChecker : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static public void InitSceneCallback()
     {
-        SceneManager.sceneLoaded += SceneWasLoaded;
+      //  SceneManager.sceneLoaded += SceneWasLoaded;
     }
 
     // This used to be OnLevelWasLoaded (now deprecated). It is registered as a callback on Scene Load in the

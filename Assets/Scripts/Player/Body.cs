@@ -8,9 +8,20 @@ public class Body : MonoBehaviour
 	public void Awake()
 	{
 		GameObject bodiesHolder = GameObject.FindGameObjectWithTag("Bodies");
+
+		if (bodiesHolder)
+			transform.parent = bodiesHolder.transform;
+		else
+		{
+			GameObject go = new GameObject("Bodies");
+			go.tag = "Bodies";
+			transform.parent = new GameObject("Bodies").transform;
+			
+		}
+
 		
-		transform.parent = bodiesHolder ? bodiesHolder.transform : new GameObject("Bodies").transform; 
-		
+
+
 		// TODO CHANGE IF BBUGGY
 	}
 	
