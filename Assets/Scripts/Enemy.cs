@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void DamageBase() {
-        snakeBase.hp -= 1;
+        snakeBase.HP -= 1;
         Die();
     }
 }

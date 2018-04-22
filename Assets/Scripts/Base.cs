@@ -1,8 +1,16 @@
 using UnityEngine;
 
 public class Base : MonoBehaviour {
-	public int hp;
-	public int maxhp = 10;
+	public int maxHP = 100;
+	private int hp;
+	public int HP {
+		get {
+			return hp;
+		} set {
+			hp = value;
+			UpdateHP();
+		}
+	}
 	public GameObject measure;
 
 	public float RotBegin;
@@ -16,18 +24,12 @@ public class Base : MonoBehaviour {
 		
 	}
 
-	private void Update()
-	{
-		float ratio = (float) hp / maxhp;
-		Quaternion start = Quaternion.Euler(0,0, RotBegin);
-		Quaternion end = Quaternion.Euler(0, 0, RotEnd);
-		
-		//measure.transform.rotation = Quater
-		measure.transform.rotation = Quaternion.Slerp(end,start, ratio); // TODO FIX
-	//	measure.transform.rotation = Quaternion.RotateTowards(start, end, ratio);
-		
+	void Start() {
+		hp = maxHP;
+		UpdateHP();
+	}
 
-		//measure.transform.rotation = Quaternion.Euler(new Vector3(0,0,lerp));
-
+	void UpdateHP() {
+		measure.transform.rotation = Quaternion.Euler(0, 0, (float) hp / maxHP * 315 - 180);
 	}
 }
