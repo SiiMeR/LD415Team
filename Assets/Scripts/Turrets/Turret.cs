@@ -21,8 +21,10 @@ public class Turret : MonoBehaviour {
 			Aim();
 		} else {
 			target = EnemyTracker.Instance.GetNearest(transform.position);
-			Aim();
-		}
+			if (target != null) {
+				Aim();
+			}
+	}
 
 		if (timer > cooldown) {
 			timer -= cooldown;

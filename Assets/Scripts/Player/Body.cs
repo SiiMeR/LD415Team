@@ -13,8 +13,9 @@ public class Body : MonoBehaviour
 			transform.parent = bodiesHolder.transform;
 		else
 		{
-			GameObject go = new GameObject("Bodies");
-			go.tag = "Bodies";
+			GameObject go = new GameObject("Bodies") {
+				tag = "Bodies"
+			};
 			transform.parent = new GameObject("Bodies").transform;
 			
 		}
@@ -53,7 +54,7 @@ public class Body : MonoBehaviour
 	public void DeleteSlow(float secondsPerDelete)
 	{	
 		
-		StartCoroutine(slowDeath(secondsPerDelete));
+		StartCoroutine(SlowDeath(secondsPerDelete));
 	}
 
 
@@ -76,7 +77,7 @@ public class Body : MonoBehaviour
 		}
 	}
 
-	IEnumerator slowDeath(float seconds)
+	IEnumerator SlowDeath(float seconds)
 	{
 		SetColors();
 		SetEmpty();
