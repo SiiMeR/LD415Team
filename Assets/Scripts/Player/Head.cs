@@ -11,7 +11,7 @@ public class Head : MonoBehaviour {
 
 	int counter = 0;
 	int n;
-	Vector2 moveDirection = Vector2.up;
+	Vector2 moveDirection = Vector2.right;
 
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
@@ -28,8 +28,8 @@ public class Head : MonoBehaviour {
 		right
 	}
 
-	Direction lastDirection = Direction.up;
-	Direction direction = Direction.up;
+	Direction lastDirection = Direction.right;
+	Direction direction = Direction.right;
 
 	void Update() {
 		if (Input.GetButtonDown("Up") && lastDirection != Direction.down) {
