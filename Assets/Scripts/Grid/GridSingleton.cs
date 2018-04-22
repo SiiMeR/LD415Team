@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class GridSingleton : Singleton<GridSingleton>
+public class 	GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
 	public List<GameObject> otherTiles;

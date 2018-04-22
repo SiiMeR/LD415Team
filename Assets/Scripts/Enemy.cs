@@ -24,13 +24,13 @@ public class Enemy : MonoBehaviour {
 
 	private void Die() {
 		GoldTracker.Gold += gold;
-		EnemyTracker.enemies.Remove(this);
+		EnemyTracker.Instance.enemies.Remove(this);
         Destroy(gameObject);
     }
 
 	void Start () {
 		snakeBase = GameObject.FindGameObjectWithTag("Base").GetComponent<Base>();
-		EnemyTracker.enemies.Add(this);
+		EnemyTracker.Instance.enemies.Add(this);
 	}
 
     private void FixedUpdate() {

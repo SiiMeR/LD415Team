@@ -34,6 +34,7 @@ public class GridMovement : MonoBehaviour {
 			UpdatePaths();
 			
 			transform.Translate(MoveDirection);
+			
 
 			if (GridSingleton.Instance.Get(transform.position).type == TileType.SNAKE)
 			{
@@ -45,6 +46,7 @@ public class GridMovement : MonoBehaviour {
 
 	void UpdatePaths()
 	{
+
 		List<GridTile> grid = Pathfinder.Instance.FindPath(transform.position, baas.transform.position);
 
 		if (grid != null)

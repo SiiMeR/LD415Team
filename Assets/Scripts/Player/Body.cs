@@ -10,7 +10,12 @@ public class Body : MonoBehaviour
             Next.Move(transform.position);
 		}
         else {
-            GridSingleton.Instance.Set((int)transform.position.x, (int)transform.position.y, TileType.EMPTY);
+			
+			if (GridSingleton.Instance != null)
+			{
+				GridSingleton.Instance.Set((int)transform.position.x, (int)transform.position.y, TileType.EMPTY);
+			}
+            
         }
         transform.position = pos;
 	}
