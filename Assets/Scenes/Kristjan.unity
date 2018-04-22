@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c2f696321b4647b47b0b1d2030bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backGroundMusic: Pim Poy
 --- !u!1001 &372937416
 Prefab:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ Prefab:
         type: 2}
       propertyPath: audioClips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 2b848074ea211bf4db184f560d9c39b8, type: 3}
+      objectReference: {fileID: 8300000, guid: 22d6d60ff90fab7499ffb90a814c8f01, type: 3}
     - target: {fileID: 20886421535366820, guid: 162d2cc4942c8d64c90aef348538ac5a,
         type: 2}
       propertyPath: orthographic size
