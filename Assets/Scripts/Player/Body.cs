@@ -5,6 +5,15 @@ public class Body : MonoBehaviour
 {
 	public Body Next;
 
+	public void Awake()
+	{
+		GameObject bodiesHolder = GameObject.FindGameObjectWithTag("Bodies");
+		
+		transform.parent = bodiesHolder ? bodiesHolder.transform : new GameObject("Bodies").transform; 
+		
+		// TODO CHANGE IF BBUGGY
+	}
+	
 	public void Move(Vector3 pos) {
 		if (Next != null) {
             Next.Move(transform.position);

@@ -8,6 +8,11 @@ public class Turret : MonoBehaviour {
 
 	float timer = 0;
 
+
+	void Awake()
+	{
+
+	}
     void Update() {
 		timer += Time.deltaTime;
 
