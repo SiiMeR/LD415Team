@@ -7,7 +7,6 @@ public class 	GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
 	public List<GameObject> otherTiles;
-	public GameObject specialTile;
 
 	
 	//public Transform StartPosition;
@@ -121,9 +120,6 @@ public class 	GridSingleton : Singleton<GridSingleton>
 							randomTile = otherTiles[i];
 							break;
 						}
-					}
-					if (y == gridSizeY - BGUnitsPerTile && x == gridSizeX - BGUnitsPerTile) {
-						randomTile = specialTile;
 					}
 					GameObject tile = Instantiate(randomTile, new Vector3(worldPoint.x, worldPoint.y, 0), Quaternion.identity);   
 					tile.transform.SetParent(transform);   
