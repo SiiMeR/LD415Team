@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void Die() {
+		AudioManager.instance.Play("killSound");
+
 		GoldTracker.Gold += gold;
 		EnemyTracker.Instance.enemies.Remove(this);
 		

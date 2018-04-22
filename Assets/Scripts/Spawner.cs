@@ -14,9 +14,9 @@ public class Spawner : MonoBehaviour {
 	}
 
 	IEnumerator Spawn() {
-		for (int i = 10; ; i += 10) {
-			for (int j = 0; j < i; j++) {
-				Instantiate(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
+		for (int wave = 1; ; wave++) {
+			for (int i = 0; i < wave; i++) {
+				Instantiate(enemies[Random.Range(0, enemies.Count)], transform.position, Quaternion.identity);
 				yield return new WaitForSeconds(cooldown);
 			}
 			yield return new WaitForSeconds(waveCooldown);

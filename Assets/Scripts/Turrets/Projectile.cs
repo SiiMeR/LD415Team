@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour {
 
 			if (target)
 			{
+				AudioManager.instance.Play("hitSound");
 				target.Health -= damage;
 			}
 			Destroy(gameObject);
