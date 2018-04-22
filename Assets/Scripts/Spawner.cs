@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 	public List<GameObject> enemies;
-	public float cooldown = 5;
-	public float waveCooldown = 15;	
+	public float waveCooldown = 10;	
 
 	void Start() {
 		
@@ -14,9 +13,12 @@ public class Spawner : MonoBehaviour {
 	}
 
 	IEnumerator Spawn() {
-		for (int i = 10; ; i += 10) {
-			for (int j = 0; j < i; j++) {
-				Instantiate(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
+		for (int wave = 1; ; wave++) {
+			int monsterCount = (int) Mathf.Pow((3 * wave), 1.5f);
+			float cooldown = 5 * Mathf.Sqrt(monsterCount) / monsterCount;
+
+			for (int i = 0; i < monsterCount; i++) {
+				Instantiate(enemies[Random.Range(0, enemies.Count)], transform.position, Quaternion.identity);
 				yield return new WaitForSeconds(cooldown);
 			}
 			yield return new WaitForSeconds(waveCooldown);

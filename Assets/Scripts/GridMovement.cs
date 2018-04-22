@@ -45,7 +45,7 @@ public class GridMovement : MonoBehaviour {
 			
 			GridTile oldTile = GridSingleton.Instance.Get(startPos);
 
-			oldTile.type = oldType;
+			oldTile.type = TileType.EMPTY;
 			
 			GridTile tile = GridSingleton.Instance.Get(endPos);
 
@@ -56,21 +56,10 @@ public class GridMovement : MonoBehaviour {
 				FindObjectOfType<Head>().DeleteBodyAtPos(transform.position);
 			}
 
-			if (tile.type != TileType.SPAWNER)
-			{
+			if (tile.type != TileType.BASE && tile.type != TileType.SPAWNER) {
+
 				tile.type = TileType.ENEMY;
-			}
-			
-			
-			
-			
-			if (tile.type != TileType.BASE )
-			{
-				
-				tile.type = TileType.ENEMY;
-			}
-			else
-			{
+			} else if (tile.type == TileType.BASE) {
 				GetComponent<Enemy>().DamageBase();
 			}
 			

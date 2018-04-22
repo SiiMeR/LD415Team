@@ -14,6 +14,7 @@ public class Head : MonoBehaviour {
 	Vector2 moveDirection = Vector2.right;
 
 	void Start() {
+		AudioManager.instance.Play("Pim Poy", isLooping: true);
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
 		for (int i = 0; i < 2; i++) {
@@ -91,7 +92,7 @@ public class Head : MonoBehaviour {
 
 		//Check if something is in the way
 		GridTile tile = GridSingleton.Instance.Get(newX, newY);
-		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.ENEMY || tile.type == TileType.SPAWNER)
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.SPAWNER)
 		{
 			StartCoroutine(DIE());
 

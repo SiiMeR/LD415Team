@@ -684,8 +684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15dc002c743c834a8a9debac71a92a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  _health: 100
+  maxHealth: 10
+  _health: 10
   gold: 1
   hp: {fileID: 114199736866821886}
 --- !u!114 &114522834054172922
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a74aea49b62ec449c6005ecb883b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilesPerSecond: 1
+  _tilesPerSecond: 2
 --- !u!114 &114972798366079616
 MonoBehaviour:
   m_ObjectHideFlags: 1
