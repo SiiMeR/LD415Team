@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3515e0c6373d9d34b9f650def0ab3d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesPerSecond: 1
+  tilesPerSecond: 5
   neck: {fileID: 0}
   bodyPrefab: {fileID: 1219891222122456, guid: 04b3f3b61b1f7234a810154df795d840, type: 2}
 --- !u!212 &212488847680116522

@@ -20,6 +20,6 @@ public class GoldTracker : MonoBehaviour {
 	}
 
 	public static void UpdateGoldText() {
-		goldText.text = "Gold: " + gold.ToString();
+		goldText.text = gold + "pts";
 	}
 }

@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d2a293fc38baa4f8f0b5024ae02b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  speed: 2
+  damage: 1
+  speed: 5
   target: {fileID: 0}
 --- !u!212 &212468660406334274
 SpriteRenderer:
@@ -97,5 +97,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0

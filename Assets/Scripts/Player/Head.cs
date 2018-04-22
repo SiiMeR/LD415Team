@@ -12,7 +12,7 @@ public class Head : MonoBehaviour {
 	void Start() {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 2; i++) {
 			Grow();
 		}
 	}
@@ -60,12 +60,17 @@ public class Head : MonoBehaviour {
 			}
 			Move();
 
+			CheckEdible();
 			//TEMPORARY
-			if (GoldTracker.Gold > 10) {
+			if (GoldTracker.Gold >= 10) {
 				Grow();
 				GoldTracker.Gold -= 10;
 			}
 		}		
+	}
+
+	private void CheckEdible() {
+		if (GridSingleton.Instance.Get(transform.position))
 	}
 
 	private void Move() {
