@@ -69,6 +69,7 @@ public class Head : MonoBehaviour {
 	private void CheckEdible(int x, int y) {
 		if (GridSingleton.Instance.Get(x, y).type == TileType.PICKUP) {
 			Grow();
+			Destroy(GameObject.FindGameObjectWithTag("Food"));
 		}
 	}
 

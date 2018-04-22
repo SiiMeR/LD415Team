@@ -88,4 +88,6 @@ MonoBehaviour:
   gridWorldSize: {x: 32, y: 32}
   nodeRadius: 0.5
   Distance: 0
+  foodSpawnDelay: 60
+  foodPrefab: {fileID: 1509748107995564, guid: f431b93556fd63744b368b71075eab45, type: 2}
   BGUnitsPerTile: 4

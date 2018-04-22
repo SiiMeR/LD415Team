@@ -9,6 +9,7 @@ TagManager:
   - Bullets
   - Head
   - Bodies
+  - Food
   layers:
   - Default
   - TransparentFX

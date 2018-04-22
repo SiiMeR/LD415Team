@@ -15,6 +15,8 @@ public class 	GridSingleton : Singleton<GridSingleton>
 	public Vector2Int gridWorldSize;
 	public float nodeRadius;
 	public float Distance;
+	public float foodSpawnDelay;
+	public GameObject foodPrefab;
 
 	public int BGUnitsPerTile = 4;
 	
@@ -242,5 +244,17 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		}
 
 		return neighbours;
+	}
+
+	IEnumerator SpawnFood() {
+		yield return new WaitForSeconds(foodSpawnDelay);
+		while (true) {
+			int x = Random.Range(0, gridSizeX);
+			int y = Random.Range(0, gridSizeY);
+			if ((x != 0 || y != gridSizeY - 1) && (x != gridSizeX - 1 || y != 0) && Get(x, y).type != TileType.SNAKE) {
+				Set(x, y, TileType.PICKUP);
+				Instantiate(foodPrefab, new Vector3(x, y), Quaternion.identity);
+			}
+		}
 	}
 }
