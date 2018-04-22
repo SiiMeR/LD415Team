@@ -251,7 +251,7 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		while (true) {
 			int x = Random.Range(0, gridSizeX);
 			int y = Random.Range(0, gridSizeY);
-			if ((x != 0 || y != gridSizeY - 1) && (x != gridSizeX - 1 || y != 0) && Get(x, y).type != TileType.SNAKE) {
+			if (Get(x, y).type == TileType.EMPTY) {
 				Set(x, y, TileType.PICKUP);
 				Instantiate(foodPrefab, new Vector3(x, y), Quaternion.identity);
 			}
