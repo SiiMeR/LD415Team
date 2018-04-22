@@ -17,6 +17,8 @@ public class GridMovement : MonoBehaviour {
 	public List<GridTile> closestPath;
 
 	private Vector3 realLoc;
+
+	private TileType oldType;
 	
 	void Start () {
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * _tilesPerSecond));
@@ -43,17 +45,35 @@ public class GridMovement : MonoBehaviour {
 			
 			GridTile oldTile = GridSingleton.Instance.Get(startPos);
 
-			oldTile.type = TileType.EMPTY;
+			oldTile.type = oldType;
 			
 			GridTile tile = GridSingleton.Instance.Get(endPos);
-	
+
+			oldType = tile.type;
 			
 			if (tile.type == TileType.SNAKE)
 			{
 				FindObjectOfType<Head>().DeleteBodyAtPos(transform.position);
 			}
 
-			tile.type = TileType.ENEMY;
+			if (tile.type != TileType.SPAWNER)
+			{
+				tile.type = TileType.ENEMY;
+			}
+			
+			
+			
+			
+			if (tile.type != TileType.BASE )
+			{
+				
+				tile.type = TileType.ENEMY;
+			}
+			else
+			{
+				GetComponent<Enemy>().DamageBase();
+			}
+			
 		}
 		
 	}
