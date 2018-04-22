@@ -85,6 +85,10 @@ public class 	GridSingleton : Singleton<GridSingleton>
 		CreateGrid();
 	}
 
+	private void Start() {
+		StartCoroutine(SpawnFood());
+	}
+
 	private void CreateGrid()
 	{
 		
@@ -247,8 +251,8 @@ public class 	GridSingleton : Singleton<GridSingleton>
 	}
 
 	IEnumerator SpawnFood() {
-		yield return new WaitForSeconds(foodSpawnDelay);
 		while (true) {
+			yield return new WaitForSeconds(foodSpawnDelay);
 			int x = Random.Range(0, gridSizeX);
 			int y = Random.Range(0, gridSizeY);
 			if (Get(x, y).type == TileType.EMPTY) {
