@@ -198,21 +198,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114594649309560894, guid: 69ceb53f644d8b8488b61bf08645a1c3,
-        type: 2}
-      propertyPath: gridWorldSize.x
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114594649309560894, guid: 69ceb53f644d8b8488b61bf08645a1c3,
-        type: 2}
-      propertyPath: gridWorldSize.y
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114594649309560894, guid: 69ceb53f644d8b8488b61bf08645a1c3,
-        type: 2}
-      propertyPath: foodSpawnDelay
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69ceb53f644d8b8488b61bf08645a1c3, type: 2}
   m_IsPrefabParent: 0
