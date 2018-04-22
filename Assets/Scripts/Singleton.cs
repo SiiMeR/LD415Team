@@ -18,6 +18,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 		get
 		{
 			if (applicationIsQuitting) {
+				
 				Debug.LogWarning("[Singleton] Instance '"+ typeof(T) +
 					"' already destroyed on application quit." +
 					" Won't create again - returning null.");
@@ -69,7 +70,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	///   even after stopping playing the Application. Really bad!
 	/// So, this was made to be sure we're not creating that buggy ghost object.
 	/// </summary>
-	public void OnDestroy () {
-		applicationIsQuitting = true;
+	public void OnDestroy ()
+	{
+		_instance = null;
+	//	applicationIsQuitting = true;
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class GridSingleton : Singleton<GridSingleton>
+public class 	GridSingleton : Singleton<GridSingleton>
 {
 	[SerializeField] private GameObject bgTile;
 	public List<GameObject> otherTiles;
@@ -30,14 +30,40 @@ public class GridSingleton : Singleton<GridSingleton>
 		return grid[row * gridSizeX + col];
 	}
 
+	public GridTile Get(Vector3 position)
+	{
+		return Get((int) position.x, (int) position.y);
+	}
+
+	public void Empty(Vector3 position)
+	{
+		Get(position).type = TileType.EMPTY;
+	}
+	
 	public void Set(int col, int row, TileType type) {
 		grid[row * gridSizeX + col].type = type;
 	}
 
 	public void Set(Vector2Int colRow, TileType type)
 	{
-
+		
 		grid[colRow.y * gridSizeX + colRow.x].type = type;	
+	}
+
+	public void Set(Vector2Int colROw, TileType type, Vector3 size)
+	{
+		int bottomX = (int) (colROw.x - size.x / 2);
+		int bottomY = (int) (colROw.y - size.y / 2);
+		
+	//	Vector2Int bottomLeft = new Vector2Int(bottomX, bottomY);
+
+		for (int x = bottomX + 1; x < bottomX + size.x + 1; x++)
+		{	
+			for (int y = bottomY + 1; y < bottomY + size.y + 1; y++)
+			{
+				Set(new Vector2Int(x,y), type);
+			}
+		}
 	}
 
 	public void Set(int col, int row, GridTile tile)
@@ -118,30 +144,30 @@ public class GridSingleton : Singleton<GridSingleton>
 		{
 			foreach (var node in grid)
 			{
+
+				if (node.type == TileType.EMPTY)
+				{
+					Gizmos.color = Color.yellow;
+				}
 				if (node.type == TileType.SNAKE)
 				{
 					Gizmos.color = Color.white;
 				}
-				else if(node.type == TileType.BASE)
-				{
-					Gizmos.color = Color.magenta;
-				}
+
 				else if (node.type == TileType.ENEMY)
 				{
 					Gizmos.color = Color.cyan;
 				}
+				else if(node.type == TileType.BASE)
+				{
+				//	Gizmos.color = Color.magenta;
+				}
 				else
 				{
-					Gizmos.color = Color.yellow;
+				//	
 				}
 
-				if (FinalPath != null)
-				{
-					if (FinalPath.Contains(node))
-					{
-						Gizmos.color = Color.red;
-					}
-				}
+
 
 		
 
@@ -149,6 +175,7 @@ public class GridSingleton : Singleton<GridSingleton>
 				c.a = 0.99f;
 				Gizmos.color = c;
 				Gizmos.DrawCube(new Vector3(node.Position.x -offset, node.Position.y -offset), new Vector3(0.7f,0.7f,0.7f) * (nodeDiameter - Distance));
+				
 			}
 		}
 	}

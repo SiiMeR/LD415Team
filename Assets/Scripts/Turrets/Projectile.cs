@@ -5,6 +5,10 @@ public class Projectile : MonoBehaviour {
 	public float speed;
 	public Enemy target;
 
+	void Awake()
+	{
+		transform.parent = GameObject.FindGameObjectWithTag("Bullets").transform;
+	}
 	void Update() {
 
 		if (target == null) {

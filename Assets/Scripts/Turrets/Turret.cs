@@ -8,6 +8,11 @@ public class Turret : MonoBehaviour {
 
 	float timer = 0;
 
+
+	void Awake()
+	{
+
+	}
     void Update() {
 		timer += Time.deltaTime;
 
@@ -15,11 +20,11 @@ public class Turret : MonoBehaviour {
 		if (target != null) {
 			Aim();
 		} else {
-			target = EnemyTracker.GetNearest(transform.position);
+			target = EnemyTracker.Instance.GetNearest(transform.position);
 			if (target != null) {
 				Aim();
 			}
-		}
+	}
 
 		if (timer > cooldown) {
 			timer -= cooldown;
@@ -29,8 +34,8 @@ public class Turret : MonoBehaviour {
 				if ((target.transform.position - transform.position).magnitude < range) {
 					Shoot();
 				} else {
-					Enemy target = EnemyTracker.GetNearest(transform.position);
-					if ((target.transform.position - transform.position).magnitude < range) {
+					Enemy trgt = EnemyTracker.Instance.GetNearest(transform.position);
+					if ((trgt.transform.position - transform.position).magnitude < range) {
 						Shoot();
 					}
 				}
