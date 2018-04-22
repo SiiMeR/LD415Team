@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {	
+public class Enemy : MonoBehaviour {
+	public float maxHealth = 100;
 	[SerializeField] private float _health = 100;
 	public int gold = 1;
     Base snakeBase;
+
+	public Image hp;
 
 	public float Health
 	{
@@ -16,7 +20,8 @@ public class Enemy : MonoBehaviour {
 			}
 			else
 			{
-				_health = value;	
+				_health = value;
+				hp.fillAmount = _health / maxHealth;
 			}
 			
 		}
@@ -33,6 +38,7 @@ public class Enemy : MonoBehaviour {
     }
 
 	void Start () {
+		Health = maxHealth;
 		snakeBase = GameObject.FindGameObjectWithTag("Base").GetComponent<Base>();
 		EnemyTracker.Instance.enemies.Add(this);
 	}
