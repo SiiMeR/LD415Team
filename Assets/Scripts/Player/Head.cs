@@ -14,6 +14,7 @@ public class Head : MonoBehaviour {
 	Vector2 moveDirection = Vector2.right;
 
 	void Start() {
+		AudioManager.instance.Play("Pim Poy", isLooping: true);
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
 		for (int i = 0; i < 2; i++) {
