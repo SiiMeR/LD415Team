@@ -8,7 +8,7 @@ public class Main : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameScoreServer.SendGameScoreToServer("user1", 100);
+        //GameScoreServer.SendGameScoreToServer("user1", 100);
         GameScoreServer.getHighScores();
         AudioManager.instance.Play(backGroundMusic, isLooping: true);
     }
