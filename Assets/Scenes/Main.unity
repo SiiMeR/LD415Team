@@ -166,7 +166,7 @@ Prefab:
     - target: {fileID: 114403594096295696, guid: 2f142c66aa9a6204d8cdf887721b7bf1,
         type: 2}
       propertyPath: waveCooldown
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114403594096295696, guid: 2f142c66aa9a6204d8cdf887721b7bf1,
         type: 2}
@@ -325,6 +325,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114594649309560894, guid: 69ceb53f644d8b8488b61bf08645a1c3,
+        type: 2}
+      propertyPath: foodSpawnDelay
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69ceb53f644d8b8488b61bf08645a1c3, type: 2}
   m_IsPrefabParent: 0
@@ -370,6 +375,11 @@ Prefab:
     - target: {fileID: 4447676415044502, guid: 65c0efdd0fccc2f499093722dd1b4f85, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163139668531560, guid: 65c0efdd0fccc2f499093722dd1b4f85,
+        type: 2}
+      propertyPath: tilesPerSecond
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65c0efdd0fccc2f499093722dd1b4f85, type: 2}

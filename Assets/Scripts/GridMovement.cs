@@ -45,7 +45,7 @@ public class GridMovement : MonoBehaviour {
 			
 			GridTile oldTile = GridSingleton.Instance.Get(startPos);
 
-			oldTile.type = oldType;
+			oldTile.type = TileType.EMPTY;
 			
 			GridTile tile = GridSingleton.Instance.Get(endPos);
 

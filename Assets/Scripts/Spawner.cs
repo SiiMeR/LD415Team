@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour {
 	IEnumerator Spawn() {
 		for (int wave = 1; ; wave++) {
 			int monsterCount = (int) Mathf.Pow((3 * wave), 1.5f);
-			float cooldown = 10 * Mathf.Sqrt(monsterCount) / monsterCount;
+			float cooldown = 5 * Mathf.Sqrt(monsterCount) / monsterCount;
 
 			for (int i = 0; i < monsterCount; i++) {
 				Instantiate(enemies[Random.Range(0, enemies.Count)], transform.position, Quaternion.identity);
