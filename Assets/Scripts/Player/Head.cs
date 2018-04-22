@@ -91,7 +91,7 @@ public class Head : MonoBehaviour {
 
 		//Check if something is in the way
 		GridTile tile = GridSingleton.Instance.Get(newX, newY);
-		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE)
+		if (tile.type == TileType.BASE || tile.type == TileType.SNAKE || tile.type == TileType.ENEMY)
 		{
 			StartCoroutine(DIE());
 
