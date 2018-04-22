@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour {
 
 	void Start() {
 		
-		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y), TileType.SPAWNER, GetComponent<SpriteRenderer>().bounds.size);
+		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y), TileType.SPAWNER);
 		StartCoroutine(Spawn());
 	}
 

@@ -15,16 +15,13 @@ public class Base : MonoBehaviour {
 
 	public float RotBegin;
 	public float RotEnd;
-	void Awake() {
-		
-		if (GridSingleton.Instance != null)
-		{
-			GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y), TileType.BASE, GetComponent<SpriteRenderer>().bounds.size);
-		}
-		
-	}
 
 	void Start() {
+		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y), TileType.BASE);
+		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x, (int) transform.position.y + 1), TileType.BASE);
+		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x + 1, (int) transform.position.y), TileType.BASE);
+		GridSingleton.Instance.Set(new Vector2Int((int) transform.position.x + 1, (int) transform.position.y + 1), TileType.BASE);
+
 		hp = maxHP;
 		UpdateHP();
 	}

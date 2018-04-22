@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour {
 			if (target != null) {
 				Aim();
 			}
-	}
+		}
 
 		if (timer > cooldown) {
 			timer -= cooldown;
@@ -34,8 +34,8 @@ public class Turret : MonoBehaviour {
 				if ((target.transform.position - transform.position).magnitude < range) {
 					Shoot();
 				} else {
-					Enemy trgt = EnemyTracker.Instance.GetNearest(transform.position);
-					if ((trgt.transform.position - transform.position).magnitude < range) {
+					target = EnemyTracker.Instance.GetNearest(transform.position);
+					if ((target.transform.position - transform.position).magnitude < range) {
 						Shoot();
 					}
 				}
