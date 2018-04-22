@@ -13,7 +13,7 @@ public class EventSystemChecker : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static public void InitSceneCallback()
     {
-      //  SceneManager.sceneLoaded += SceneWasLoaded;
+        SceneManager.sceneLoaded += SceneWasLoaded;
     }
 
     // This used to be OnLevelWasLoaded (now deprecated). It is registered as a callback on Scene Load in the
@@ -31,8 +31,8 @@ public class EventSystemChecker : MonoBehaviour
             GameObject obj = new GameObject("EventSystem");
 
             //And adds the required components, while storing a reference in the menuSystem variable, which is static and accessible from other scripts
-            menuEventSystem = obj.AddComponent<EventSystem>();
-            obj.AddComponent<StandaloneInputModule>().forceModuleActive = true;
+//            menuEventSystem = obj.AddComponent<EventSystem>();
+//            obj.AddComponent<StandaloneInputModule>().forceModuleActive = true;
 
         }
 

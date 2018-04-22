@@ -112,7 +112,7 @@ public class 	GridSingleton : Singleton<GridSingleton>
 				
 				Set(x,y, tileempty);
 				
-				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)
+				if (y % BGUnitsPerTile == 0 && x % BGUnitsPerTile == 0)	
 				{
 					float randomNumber = Random.Range(0f, 1f);
 					GameObject randomTile = bgTile;
@@ -131,7 +131,6 @@ public class 	GridSingleton : Singleton<GridSingleton>
 				}
 				else
 				{
-					
 				
 				}
 				
@@ -155,11 +154,19 @@ public class 	GridSingleton : Singleton<GridSingleton>
 				{
 					Gizmos.color = Color.yellow;
 				}
-				if (node.type == TileType.SNAKE)
+				else if (node.type == TileType.SNAKE)
 				{
 					Gizmos.color = Color.white;
 				}
 
+				else if (node.type == TileType.PICKUP)
+				{
+					Gizmos.color = Color.green;
+				}
+				else if (node.type == TileType.SPAWNER)
+				{
+					Gizmos.color = Color.black;
+				}
 				else if (node.type == TileType.ENEMY)
 				{
 					Gizmos.color = Color.cyan;

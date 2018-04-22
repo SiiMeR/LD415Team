@@ -11,7 +11,7 @@ public class MenuObject : MonoBehaviour {
     public void SetFirstSelected()
     {
         //Tell the EventSystem to select this object
-        EventSystemChecker.menuEventSystem.SetSelectedGameObject(firstSelectedObject);
+//        EventSystemChecker.menuEventSystem.SetSelectedGameObject(firstSelectedObject);
     }
 
     public void OnEnable()

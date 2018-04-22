@@ -3,5 +3,7 @@
 	SNAKE = 1,
 	ENEMY = 2,
 	BASE = 3,
-	PICKUP = 4
+	PICKUP = 4,
+	SPAWNER,
+	
 }

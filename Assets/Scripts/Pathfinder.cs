@@ -70,7 +70,7 @@ public class Pathfinder : Singleton<Pathfinder>
 					
 				}
 				
-				else if ((neighbour.type == TileType.SNAKE || closedList.Contains(neighbour)))
+				else if ((neighbour.type == TileType.SNAKE || closedList.Contains(neighbour) || neighbour.type == TileType.PICKUP || neighbour.type == TileType.SPAWNER))
 				{
 					continue;
 				}
