@@ -53,13 +53,14 @@ public class GridMovement : MonoBehaviour {
 			
 			if (tile.type == TileType.SNAKE)
 			{
-				FindObjectOfType<Head>().DeleteBodyAtPos(transform.position);
+				FindObjectOfType<Head>().DeleteBodyAtPos(endPos);
 			}
-
+			
 			if (tile.type != TileType.BASE && tile.type != TileType.SPAWNER) {
-
 				tile.type = TileType.ENEMY;
-			} else if (tile.type == TileType.BASE) {
+			}
+			
+			else if (tile.type == TileType.BASE) {
 				GetComponent<Enemy>().DamageBase();
 			}
 			
@@ -88,13 +89,14 @@ public class GridMovement : MonoBehaviour {
 		{
 			closestPath = grid;
 		}
+
+		
 		else
 		{
 			grid = Pathfinder.Instance.FindPath(realLoc, baas.transform.position, true);
 			if (grid != null)
 			{
 				closestPath = grid;
-				return;
 			}
 		}
 		

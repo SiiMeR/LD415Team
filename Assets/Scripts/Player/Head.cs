@@ -17,7 +17,7 @@ public class Head : MonoBehaviour {
 		AudioManager.instance.Play("Pim Poy", isLooping: true);
 		n = Mathf.RoundToInt(1 / (Time.fixedDeltaTime * tilesPerSecond));
 		//TEMPORARY
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 4; i++) {
 			Grow();
 		}
 	}
@@ -123,9 +123,8 @@ public class Head : MonoBehaviour {
 
 		GameObject.FindGameObjectWithTag("deathscreen").GetComponentInChildren<Text>(true).enabled = true;
 	}
-	private IEnumerator DIE()
+	public IEnumerator DIE()
 	{
-		print("you died, no implementation tho :DDDDDDDDDDDDDDDDDD, press enter to restart");
 
 		Time.timeScale = 0f;
 		

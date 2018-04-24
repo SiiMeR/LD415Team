@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class 	GridSingleton : Singleton<GridSingleton>
@@ -197,7 +198,7 @@ public class 	GridSingleton : Singleton<GridSingleton>
 
 		int xCheck;
 		int yCheck;
-
+		
 		
 		// right nb
 		xCheck = currentTile.gridX + 1;
@@ -211,6 +212,19 @@ public class 	GridSingleton : Singleton<GridSingleton>
 			}
 		}
 		
+		// top nb
+		xCheck = currentTile.gridX;
+		yCheck = currentTile.gridY + 1;
+
+		if (xCheck >= 0 && xCheck < gridSizeX)
+		{
+			if (yCheck >= 0 && yCheck < gridSizeY)
+			{
+				neighbours.Add(Get(xCheck, yCheck));
+			}
+		}
+
+		
 		// left nb
 		xCheck = currentTile.gridX - 1;
 		yCheck = currentTile.gridY;
@@ -223,18 +237,7 @@ public class 	GridSingleton : Singleton<GridSingleton>
 			}
 		}
 
-		
-		// top nb
-		xCheck = currentTile.gridX;
-		yCheck = currentTile.gridY + 1;
 
-		if (xCheck >= 0 && xCheck < gridSizeX)
-		{
-			if (yCheck >= 0 && yCheck < gridSizeY)
-			{
-				neighbours.Add(Get(xCheck, yCheck));
-			}
-		}
 		
 		
 		// bot nb
@@ -249,18 +252,31 @@ public class 	GridSingleton : Singleton<GridSingleton>
 			}
 		}
 
+
+		int random = Random.Range(0, 10);
+
+
+		neighbours = neighbours.OrderBy(x => Random.Range(0,10)).ToList();
+
+		
 		return neighbours;
 	}
 
 	IEnumerator SpawnFood() {
 		while (true) {
 			yield return new WaitForSeconds(foodSpawnDelay);
-			int x = Random.Range(0, gridSizeX);
-			int y = Random.Range(0, gridSizeY);
-			if (Get(x, y).type == TileType.EMPTY) {
-				Set(x, y, TileType.PICKUP);
-				Instantiate(foodPrefab, new Vector3(x, y), Quaternion.identity);
+
+			if (GameObject.FindGameObjectsWithTag("Food").Length == 0)
+			{
+				int x = Random.Range(0, gridSizeX);
+				int y = Random.Range(0, gridSizeY);
+				if (Get(x, y).type == TileType.EMPTY) {
+					Set(x, y, TileType.PICKUP);
+					Instantiate(foodPrefab, new Vector3(x, y), Quaternion.identity);
+				}
 			}
+			
+
 		}
 	}
 }

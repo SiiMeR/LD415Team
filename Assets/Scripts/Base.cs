@@ -7,6 +7,10 @@ public class Base : MonoBehaviour {
 		get {
 			return hp;
 		} set {
+			if (value < 1)
+			{
+				StartCoroutine(GameObject.FindGameObjectWithTag("Head").GetComponent<Head>().DIE());
+			}
 			hp = value;
 			UpdateHP();
 		}

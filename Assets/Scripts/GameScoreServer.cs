@@ -8,7 +8,7 @@ using UnityEngine;
 public static class GameScoreServer
 {
 
-    static string highscoreURL = "https://www.mobileapplication.ga/ludumdare41/highscores2/10";
+    static string highscoreURL = "https://www.mobileapplication.ga/ludumdare41/highscores2/15";
 
     
     static public List<PlayerScore> scores = new List<PlayerScore>();

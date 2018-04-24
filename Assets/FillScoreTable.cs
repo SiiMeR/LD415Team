@@ -12,8 +12,13 @@ public class FillScoreTable : MonoBehaviour
 	void Start ()
 	{
 
-		var topscores = GameScoreServer.getHighScores().Take(10).OrderByDescending(highscore => highscore.score).ToList();
 
+	}
+
+	public void GetScores()
+	{
+		var topscores = GameScoreServer.getHighScores().Take(10).OrderByDescending(highscore => highscore.score).ToList();
+		
 		for (int i = 0; i < textlines.Count; i++)
 		{
 			var texts = textlines[i].GetComponentsInChildren<Text>();
@@ -28,11 +33,7 @@ public class FillScoreTable : MonoBehaviour
 			{
 				texts[0].text =  (i+1) + ". " + topscores[i].username.Trim('\"');
 				texts[1].text = topscores[i].score.ToString();
-			}
-			
-
-			
-			
+			}			
 		}
 	}
 	

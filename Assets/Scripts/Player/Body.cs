@@ -14,7 +14,7 @@ public class Body : MonoBehaviour
 		else
 		{
 			GameObject go = new GameObject("Bodies") {
-				tag = "Bodies"
+				tag = "Bodies",
 			};
 			transform.parent = new GameObject("Bodies").transform;
 			
@@ -87,7 +87,6 @@ public class Body : MonoBehaviour
 		{
 			yield return null;
 		}
-		
 		Destroy(gameObject);
 		
 		if (Next)
@@ -112,12 +111,15 @@ public class Body : MonoBehaviour
 
 	public void DeleteBodyAtPos(Vector3 pos)
 	{
-		if (Vector3.Distance(transform.position,pos) < 0.5f)
+		if (Vector3.Distance(transform.position,pos) < 0.3f)
 		{
-			DeleteSlow(0.07f);
+		//	DeleteSlow(0.07f);
+		//	GridSingleton.Instance.Get(transform.position).type = TileType.EMPTY;
+			DeleteSlow(1f);
 		}
 		else
 		{
+			
 			if (Next)
 			{
 				Next.DeleteBodyAtPos(pos);
